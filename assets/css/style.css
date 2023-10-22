@@ -1,0 +1,102 @@
+/* Global styles */
+
+:root {
+    --color-1: #22FFD3;
+    --color-2: #6BBAA4;
+    --color-3: #C7FCEB;
+    --color-4: #4034A4;
+    --white: #F7EBFF;
+    --correct-color: #;
+    --incorrect-color: #;
+
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: var(--white);
+    color: var(--color-4);
+}
+
+header {
+
+    width: 100%;
+    background-color: var(--color-4);
+    color: white;
+    height: 4rem;
+    
+}
+
+header h1 {
+    text-align: center;
+}
+
+/* Start screen */
+
+#btn-start {
+    background-color: var(--purple);
+    height: 50px;
+    width: 200px;
+    font-size: large;
+    border: 5px solid black;
+    padding: 0.5em 1.8em;
+  border-radius: 0.2em;
+}
+
+.start-container {
+    margin-top: 10vh;
+    text-align: center;
+}
+
+
+/* Game screen */
+
+.game-container {
+    width: 80%;
+    background-color: var(--color-3);
+    position: absolute;
+    color: black;
+}
+
+.game-header {
+    margin-bottom: 2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.6em;
+    border-bottom: 1.6px solid var(--white);
+    width: 80%;
+}
+
+.choice-container {
+    background-color: transparent;
+    position: relative;
+    width: 100%;
+    color: black;
+    display: inline-block;
+    font-size: 0.9em;
+    padding: 1em;
+    margin: 0.3em 0;
+    text-align: left;
+    outline: none;
+    border: 1px solid #c0bfd2;
+    border-radius: 0.3em;
+}
+
+.choice-letter {
+    display: inline-block ;
+}
+
+.choice-answer {
+    display: inline-block ;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+}
