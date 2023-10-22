@@ -1,5 +1,14 @@
 // Global variables
 
+quizContainer = document.getElementById("container");
+ctnBtn = document.getElementById("btn-ctn");
+startContainer = document.getElementById("start-container");
+gameContainer = document.getElementById("game-container");
+score = document.getElementById("current-score");
+startButton = document.getElementById("btn-start");
+scoreCount = 0;
+
+
 // Question object
 
 const questionBank = [
@@ -18,6 +27,7 @@ const questionBank = [
 // Functions
 
 // Document loading shows start screen
+
 // Clicking start game presents game screen
 // Generate random questions from question bank
 
