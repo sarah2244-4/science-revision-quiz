@@ -1,16 +1,25 @@
 // Global variables
 
-quizContainer = document.getElementById("container");
-ctnBtn = document.getElementById("btn-ctn");
-startContainer = document.getElementById("start-container");
-gameContainer = document.getElementById("game-container");
-score = document.getElementById("current-score");
-startButton = document.getElementById("btn-start");
-choiceOne = document.getElementById("choice-one");
-choicTwo = document.getElementById("choice-two");
-choiceThree = document.getElementById("choice-three");
-choiceFour = document.getElementById("choice-four");
-scoreCount = 0;
+const quizContainer = document.getElementById("container");
+const ctnButton = document.getElementById("btn-ctn");
+const startContainer = document.getElementById("start-container");
+const gameContainer = document.getElementById("game-container");
+const score = document.getElementById("current-score");
+const startButton = document.getElementById("btn-start");
+
+let questionDiv = document.getElementById("question");
+let choiceOne = document.getElementById("choice-one");
+let choiceTwo = document.getElementById("choice-two");
+let choiceThree = document.getElementById("choice-three");
+let choiceFour = document.getElementById("choice-four");
+let scoreCount = 0;
+
+let game = {
+	counter: 0,
+	currentQuestion: {},
+	choices: ["button1", "button2", "button3", "button4"],
+	questionCounter: 0,
+};
 
 // Question object
 
@@ -107,51 +116,105 @@ const questionBank = [
 	},
 ];
 
+// Clicking start game presents game screen
+function newGame() {
+	game.counter = 0;
+	game.questionCounter = 0;
+	showScore();
+}
+
+function showScore() {
+	score.innerText = game.counter;
+}
+
+// Event Listeners
+
+document.addEventListener("DOMContentLoaded", function () {
+	startButton.addEventListener("click", newGame);
+	ctnButton.addEventListener("click", nextQuestion);
+});
+
 // Functions
 
 // Document loading shows start screen
-window.onload = startScreen();
-
-// Clicking start game presents game screen
-function getGameScreen() {}
+// window.onload = startScreen();
 
 // Generate random questions from question bank
 
-function getRandomQuestions(numberOfQuestions) {
-	// Shuffle the question bank
-	const shuffledQuestions = this.shuffleArray(this.questionBank);
+// function getRandomQuestions(numberOfQuestions) {
+// 	// Shuffle the question bank
+// 	const shuffledQuestions = this.shuffleArray(this.questionBank);
 
-	// Select the first n questions
-	return shuffledQuestions.slice(0, numberOfQuestions);
-}
+// 	// Select the first n questions
+// 	return shuffledQuestions.slice(0, numberOfQuestions);
+// }
 
-function shuffleArray(array) {
-	// Fisher-Yates (Knuth) Shuffle algorithm
-	for (let i = array.length - 1; i > 0; i--) {
-		const j = Math.floor(Math.random() * (i + 1));
-		[array[i], array[j]] = [array[j], array[i]];
-	}
-	return array;
-}
+// function shuffleArray(array) {
+// 	// Fisher-Yates (Knuth) Shuffle algorithm
+// 	for (let i = array.length - 1; i > 0; i--) {
+// 		const j = Math.floor(Math.random() * (i + 1));
+// 		[array[i], array[j]] = [array[j], array[i]];
+// 	}
+// 	return array;
+// }
 
-const numberOfQuestionsPerQuiz = 10;
-const quizQuestions = quiz.getRandomQuestions(numberOfQuestionsPerQuiz);
+// const numberOfQuestionsPerQuiz = 10;
+// const quizQuestions = quiz.getRandomQuestions(numberOfQuestionsPerQuiz);
 
-// Put generated questions into game container
-function fillQuestions() {
-	for (let question of questionBank) {
-		choiceOne.innerText = "${question.choices[0]}";
-		choiceTwo.innerText = "${question.choices[1]}";
-		choiceThree.innerText = "${question.choices[2]}";
-		choiceFour.innerText = "${question.choices[3]}";
-	}
-}
-fillQuestions();
+// // Put generated questions into game container
+// function fillQuestions() {
+// 	const currentQuestion = quizQuestions[game.questionCounter];
+// 	questionDiv.innerText = currentQuestion.question;
+// 	choiceOne.innerText = currentQuestion.choices[0];
+// 	choiceTwo.innerText = currentQuestion.choices[1];
+// 	choiceThree.innerText = currentQuestion.choices[2];
+// 	choiceFour.innerText = currentQuestion.choices[3];
 
-// Getting a question correct changes colour, continue button appears, count increases
-function userChoice() {}
+// 	// getRandomQuestions();
+// 	// for (let i = 0; i < quizQuestions.length; i++) {
+// 	// 	const question = quizQuestions[i];
+// 	// 	choiceOne.innerText = `${question.choices[0]}`;
+// 	// 	choiceTwo.innerText = `${question.choices[1]}`;
+// 	// 	choiceThree.innerText = `${question.choices[2]}`;
+// 	// 	choiceFour.innerText = `${question.choices[3]}`;
+// 	// }
+// }
+// newGame();
+// fillQuestions();
 
-// Incorrect answer changes colour, correct answershown, continue button appears
-// Clicking continue cycles to next question, continue button removed, question number changes
-function nextQuestion() {}
-//
+// // Getting a question correct changes colour, continue button appears, count increases
+// function userChoice(selectedChoice) {
+// 	const currentQuestion = quizQuestions[game.questionCounter];
+// 	if (selectedChoice === currentQuestion.answer) {
+// 		// Handle correct answer (e.g., change color)
+// 		// Increment the score
+// 		game.score++;
+// 	} else {
+// 		// Handle incorrect answer (e.g., change color and show the correct answer)
+// 	}
+// 	// Show the continue button
+// 	ctnBtn.style.display = "block";
+// }
+
+// // Incorrect answer changes colour, correct answershown, continue button appears
+// // Clicking continue cycles to next question, continue button removed, question number changes
+// function nextQuestion() {
+// 	game.questionCounter++;
+// 	if (game.questionCounter < questionBank.length) {
+// 		fillQuestions();
+// 		// Clear any styling from the previous question
+// 		// Hide the continue button
+// 		ctnBtn.style.display = "none";
+// 	} else {
+// 		// Handle the end of the quiz (e.g., show the final score)
+// 		// You can add code to display the final score or perform any other action
+// 	}
+// }
+// //
+
+module.exports = {
+	game,
+	newGame,
+	score,
+	showScore,
+};

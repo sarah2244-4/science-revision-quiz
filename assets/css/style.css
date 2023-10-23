@@ -14,7 +14,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:Verdana, Geneva, Tahoma, sans-serif
 }
 
 body {
@@ -38,13 +38,14 @@ header h1 {
 /* Start screen */
 
 #btn-start {
-    background-color: var(--purple);
-    height: 50px;
+    background-color: var(--color-2);
+    color: black;
+    height: 150px;
     width: 200px;
-    font-size: large;
-    border: 5px solid black;
+    font-size: 2rem;
+    border: 2px solid black;
     padding: 0.5em 1.8em;
-  border-radius: 0.2em;
+    border-radius: 10px;
 }
 
 .start-container {
@@ -57,9 +58,12 @@ header h1 {
 
 .game-container {
     width: 80%;
-    background-color: var(--color-3);
+    background-color: transparent;
     position: absolute;
     color: black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .game-header {
@@ -68,23 +72,31 @@ header h1 {
     justify-content: space-between;
     align-items: center;
     padding-bottom: 0.6em;
-    border-bottom: 1.6px solid var(--white);
-    width: 80%;
+    background-color:  var(--color-4);
+    color: white;
+    border-radius: 10px;
 }
 
 .choice-container {
-    background-color: transparent;
     position: relative;
-    width: 100%;
-    color: black;
-    display: inline-block;
-    font-size: 0.9em;
-    padding: 1em;
-    margin: 0.3em 0;
-    text-align: left;
-    outline: none;
-    border: 1px solid #c0bfd2;
-    border-radius: 0.3em;
+    display: grid;
+    width: 80px;
+    height: 40%;
+    grid-row: auto auto;
+    grid-template-columns: 30rem 30rem;
+    grid-column-gap: 25px;
+    grid-row-gap: 25px;
+}
+
+.choice-box {
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-4);
+    color: white;
+    padding: 70px 20px;
+    text-align: start;
 }
 
 .choice-letter {
