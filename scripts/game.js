@@ -25,6 +25,86 @@ const questionBank = [
 		],
 		answer: "oxygen and glucose",
 	},
+	{
+		question: "Select the incorrect statement:",
+		choices: [
+			"Respiration produces energy",
+			"Breathing involves the lungs",
+			"Respiration and breathing both happen in every cell",
+			"Breathing and respiration are needed to give the body oxygen",
+		],
+		answer: "Respiration and breathing both happen in every cell",
+	},
+	{
+		question: "Give the correct size order from smallest to largest:",
+		choices: [
+			"Cell, tissue, organ, organ system, organism",
+			"Organism, organ system, organ, tissue, cell",
+			"Organism, cell, tissue, organ, organ system",
+			"Cell, organism, organ, tissue, organ system",
+		],
+		answer: "Cell, tissue, organ, organ system, organism",
+	},
+	{
+		question: "Give the main function of sugars in the diet.",
+		choices: [
+			"To help absorb vitamins",
+			"To build up proteins",
+			"To provide energy",
+			"To help digestion",
+		],
+		answer: "To provide energy",
+	},
+	{
+		question: "What is a property of a non-metal?",
+		choices: ["Shiny", "Malleable", "Ductile", "Brittle"],
+		answer: "Brittle",
+	},
+	{
+		question: "Give the correct size order from smallest to largest:",
+		choices: [
+			"Cell, tissue, organ, organ system, organism",
+			"Organism, organ system, organ, tissue, cell",
+			"Organism, cell, tissue, organ, organ system",
+			"Cell, organism, organ, tissue, organ system",
+		],
+		answer: "Cell, tissue, organ, organ system, organism",
+	},
+	{
+		question: "What number is neutral on the pH scale?",
+		choices: ["7", "11", "14", "1"],
+		answer: "7",
+	},
+	{
+		question: "What compound does HCl stand for?",
+		choices: [
+			"Hydrogen chloride",
+			"Hydrochloric acid",
+			"Hydrogen carbon",
+			"Hydrogen chlorine",
+		],
+		answer: "Hydrochloric acid",
+	},
+	{
+		question: "Give the definition for convection.",
+		choices: [
+			"The transfer of heat between solids",
+			"The transfer of heat with waves",
+			"The transfer of heat between liquids",
+			"The transfer of heat between fluids",
+		],
+		answer: "The transfer of heat between fluids",
+	},
+	{
+		question: "What is a series circuit?",
+		choices: [
+			"A circuit with that splits into 2 branches",
+			"A single circuit that doesn't split",
+			"A circuit that contains 2 bulbs next to each other",
+			"A circuit that isn't complete",
+		],
+		answer: "A single circuit that doesn't split",
+	},
 ];
 
 // Functions
