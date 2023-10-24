@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, showScore, startButton } = require("./game");
+const { game, newGame, showScore } = require("./game");
 
 beforeAll(() => {
 	let fs = require("fs");
@@ -28,6 +28,11 @@ describe("new game function works correctly", () => {
 		expect(
 			document.getElementById("btn-start").classList.contains("hidden")
 		).toBe(true);
+	});
+	test("game container to appear when clicked", () => {
+		expect(
+			document.getElementById("game-container").classList.contains("hidden")
+		).toBe(false);
 	});
 });
 

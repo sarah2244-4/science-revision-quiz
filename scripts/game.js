@@ -129,6 +129,10 @@ function newGame() {
 	game.questionCounter = 0;
 	showScore();
 	document.getElementById("btn-start").classList.add("hidden");
+	document.getElementById("game-container").classList.remove("hidden");
+	generateQuestions();
+	const totalQuestions = allQuestions.length;
+	fillQuestion();
 }
 
 function showScore() {
@@ -136,22 +140,24 @@ function showScore() {
 }
 console.log(game.counter);
 
-// Functions
+// Generate specofic number of random ordered questions 
+function generateQuestions(numberOfQuestions) {
+	const shuffledQuestions = questionBank.sort(() => Math.random() - 0.5);
+    // Slice the shuffled array to get the desired number of questions
+    const selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions);
 
-// Document loading shows start screen
-// window.onload = startScreen();
+    // Make sure the first question is at index 0
+    if (selectedQuestions.length > 0) {
+        const firstQuestion = selectedQuestions[0];
+        selectedQuestions.splice(0, 1); // Remove the first question from the array
+        selectedQuestions.unshift(firstQuestion); // Put the first question back at index 0
+    }
 
-// Generate random questions from question bank
+    return selectedQuestions;
+}
 
-// function getRandomQuestions(numberOfQuestions) {
-// 	// Shuffle the question bank
-// 	const shuffledQuestions = this.shuffleArray(this.questionBank);
 
-// 	// Select the first n questions
-// 	return shuffledQuestions.slice(0, numberOfQuestions);
-// }
-
-// function shuffleArray(array) {
+// function shuffleQuestions(array) {
 // 	// Fisher-Yates (Knuth) Shuffle algorithm
 // 	for (let i = array.length - 1; i > 0; i--) {
 // 		const j = Math.floor(Math.random() * (i + 1));
@@ -160,17 +166,28 @@ console.log(game.counter);
 // 	return array;
 // }
 
+// Generate question to populate question div
+function fillQuestion() {
+	const currentQuestion = quizQuestions[game.questionCounter];
+	questionDiv.innerText = currentQuestion.question;
+	choiceOne.innerText = currentQuestion.choices[0];
+	choiceTwo.innerText = currentQuestion.choices[1];
+	choiceThree.innerText = currentQuestion.choices[2];
+	choiceFour.innerText = currentQuestion.choices[3];
+}
+
+// Functions
+
+// Document loading shows start screen
+// window.onload = startScreen();
+
+// Generate random questions from question bank
+
+
 // const numberOfQuestionsPerQuiz = 10;
 // const quizQuestions = quiz.getRandomQuestions(numberOfQuestionsPerQuiz);
 
-// // Put generated questions into game container
-// function fillQuestions() {
-// 	const currentQuestion = quizQuestions[game.questionCounter];
-// 	questionDiv.innerText = currentQuestion.question;
-// 	choiceOne.innerText = currentQuestion.choices[0];
-// 	choiceTwo.innerText = currentQuestion.choices[1];
-// 	choiceThree.innerText = currentQuestion.choices[2];
-// 	choiceFour.innerText = currentQuestion.choices[3];
+
 
 // 	// getRandomQuestions();
 // 	// for (let i = 0; i < quizQuestions.length; i++) {
