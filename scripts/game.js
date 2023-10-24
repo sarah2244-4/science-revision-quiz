@@ -1,26 +1,3 @@
-// Global variables
-
-const quizContainer = document.getElementById("container");
-const ctnButton = document.getElementById("btn-ctn");
-const startContainer = document.getElementById("start-container");
-const gameContainer = document.getElementById("game-container");
-const score = document.getElementById("current-score");
-const startButton = document.getElementById("btn-start");
-
-let questionDiv = document.getElementById("question");
-let choiceOne = document.getElementById("choice-one");
-let choiceTwo = document.getElementById("choice-two");
-let choiceThree = document.getElementById("choice-three");
-let choiceFour = document.getElementById("choice-four");
-let scoreCount = 0;
-
-let game = {
-	counter: 0,
-	currentQuestion: {},
-	choices: ["button1", "button2", "button3", "button4"],
-	questionCounter: 0,
-};
-
 // Question object
 
 const questionBank = [
@@ -116,23 +93,48 @@ const questionBank = [
 	},
 ];
 
+// Global variables
+
+const ctnButton = document.getElementById("btn-ctn");
+const startContainer = document.getElementById("start-container");
+const gameContainer = document.getElementById("game-container");
+let scoreDiv = document.getElementById("current-score");
+const startButton = document.getElementById("btn-start");
+
+let questionDiv = document.getElementById("question");
+let choiceOne = document.getElementById("choice-one");
+let choiceTwo = document.getElementById("choice-two");
+let choiceThree = document.getElementById("choice-three");
+let choiceFour = document.getElementById("choice-four");
+
+// Quiz object
+
+let game = {
+	counter: 0,
+	currentQuestion: {},
+	choices: ["button1", "button2", "button3", "button4"],
+	questionCounter: 0,
+};
+
+// Event Listeners
+document.addEventListener("DOMContentLoaded", () => {
+	document.getElementById("btn-start").addEventListener("click", newGame);
+});
+
+// ctnButton.addEventListener("click", nextQuestion);
+
 // Clicking start game presents game screen
 function newGame() {
 	game.counter = 0;
 	game.questionCounter = 0;
 	showScore();
+	document.getElementById("btn-start").classList.add("hidden");
 }
 
 function showScore() {
-	score.innerText = game.counter;
+	document.getElementById("current-score").innerText = `${game.counter}`;
 }
-
-// Event Listeners
-
-document.addEventListener("DOMContentLoaded", function () {
-	startButton.addEventListener("click", newGame);
-	ctnButton.addEventListener("click", nextQuestion);
-});
+console.log(game.counter);
 
 // Functions
 
@@ -215,6 +217,5 @@ document.addEventListener("DOMContentLoaded", function () {
 module.exports = {
 	game,
 	newGame,
-	score,
 	showScore,
 };

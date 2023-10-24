@@ -2,9 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, score, showScore } = require("./game");
-
-jest.spyOn(window, "alert").mockImplementation(() => {});
+const { game, newGame, showScore } = require("./game");
 
 beforeAll(() => {
 	let fs = require("fs");
@@ -17,12 +15,19 @@ beforeAll(() => {
 describe("new game function works correctly", () => {
 	beforeAll(() => {
 		game.counter = 2;
+		document.getElementById("current-score").innerText = "2";
 		newGame();
 	});
 	test("score should be set to 0", () => {
 		expect(game.counter).toEqual(0);
 	});
 	test("reset score to 0 in html", () => {
-		expect(score.innerText).toEqual(0);
+		expect(document.getElementById("current-score").innerText).toEqual("0");
+	});
+	test("start button to hide when clicked", () => {
+		expect(
+			document.getElementById("btn-start").classList.contains("hidden")
+		).toBe(true);
 	});
 });
+
