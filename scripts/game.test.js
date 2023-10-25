@@ -39,7 +39,10 @@ describe("new game function works correctly", () => {
 		expect(generateQuestions(numberOfQuestions).length).toBe(numberOfQuestions);
 	});
 	test("question div displays generated question", () => {
-		expect(document.getElementById("question").innerText).toBe(questionBank);
+		expect(document.getElementById("question").innerText).toBe(currentQuestion);
+	});
+	test("question displayed first is index 0", () => {
+		expect(currentQuestion).toBe(selectedQuestions[0].question);
 	});
 });
 
