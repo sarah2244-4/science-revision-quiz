@@ -137,6 +137,14 @@ header h1 {
     display: inline-block ;
 }
 
+.red {
+    background-color: red;
+}
+
+.green {
+    background-color: green;
+}
+
 footer {
     position: fixed;
     bottom: 0;

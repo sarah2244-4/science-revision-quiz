@@ -116,52 +116,53 @@ let game = {
 	questionCounter: 0,
 };
 
+
 // Event Listeners
+
 document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("btn-start").addEventListener("click", newGame);
 });
-choiceOne.addEventListener("click", () => userChoice(choiceOne));
-choiceTwo.addEventListener("click", () => userChoice(choiceTwo));
-choiceThree.addEventListener("click", () => userChoice(choiceThree));
-choiceFour.addEventListener("click", () => userChoice(choiceFour));
+document.getElementById("choice-one").addEventListener("click", () => userChoice(choiceOne));
+document.getElementById("choice-two").addEventListener("click", () => userChoice(choiceTwo));
+document.getElementById("choice-three").addEventListener("click", () => userChoice(choiceThree));
+document.getElementById("choice-four").addEventListener("click", () => userChoice(choiceFour));
 
-const choiceButtons = document.querySelectorAll(".btn-choice");
-choiceButtons.forEach((choice) => {
-	choice.disabled = false;
-});
+document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
 
-// ctnButton.addEventListener("click", nextQuestion);
 
-// Clicking start game presents game screen
+// Function to start new game when clicking start game
 function newGame() {
-	game.counter = 0;
-	game.questionCounter = 1;
-	currentQuestionIndex = 0;
-	showScore();
-	document.getElementById("btn-start").classList.add("hidden");
+	game.counter = 0; // resets counter to 0
+	game.questionCounter = 1; // resets question number to 1
+	currentQuestionIndex = 0; // resets current question index from array to 0
+	showScore(); // displays score from counter
+	document.getElementById("btn-start").classList.add("hidden"); // hides start button
 	document.getElementById("game-container").classList.remove("hidden");
-	let numberOfQuestions = 2;
-	generateQuestions(numberOfQuestions);
+	let numberOfQuestions = 2; // displays number of questions
+	generateQuestions(numberOfQuestions); // generates questions
 }
+
+
+// Function to display the current score
 
 function showScore() {
 	document.getElementById("current-score").innerText = `${game.counter}`;
 	console.log(game.counter);
 }
 
-// Generate specific number of random ordered questions
+
+// Function to generate specific number of random ordered questions
+
 function generateQuestions(numberOfQuestions) {
 	let shuffledQuestions = questionBank.sort(() => Math.random() - 0.5);
-	// Slice the shuffled array to get the desired number of questions
-	let selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions);
+	let selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions); // Slice the shuffled array to get the desired number of questions
 
 	// Loop selected questions array - is this needed?
+
 	// for (let i = 0; i < selectedQuestions.length; i++) {
-	// Fill in the question div
 	currentQuestion = selectedQuestions[currentQuestionIndex];
-	document.getElementById("question").innerText = currentQuestion.question;
-	// Fill in the choices divs
-	document.getElementById("choice-one").innerText = currentQuestion.choices[0];
+	document.getElementById("question").innerText = currentQuestion.question; // Display the question in the question div
+	document.getElementById("choice-one").innerText = currentQuestion.choices[0]; // Display the choices in the choice buttons
 	document.getElementById("choice-two").innerText = currentQuestion.choices[1];
 	document.getElementById("choice-three").innerText =
 		currentQuestion.choices[2];
@@ -172,49 +173,40 @@ function generateQuestions(numberOfQuestions) {
 	return selectedQuestions;
 }
 
-// Function for correct answer
+
+// Function for choice selected
+
 function userChoice(selectedChoice) {
 	const choiceButtons = document.querySelectorAll(".btn-choice");
 	choiceButtons.forEach((choice) => {
 		choice.disabled = true;
-	});
+	}); // Disable the choices once clicked
 
 	if (selectedChoice.innerText === currentQuestion.answer) {
 		game.counter++;
-		selectedChoice.classList.add("green");
+		selectedChoice.classList.add("green"); // If answer is correct, turn the button green
 	} else {
-		selectedChoice.classList.add("red");
+		selectedChoice.classList.add("red"); // If answer is incorrect, turn the button red
 	}
 	console.log(currentQuestion.answer);
 	console.log(selectedChoice.innerText);
 	console.log(game.counter);
 	showScore();
 	console.log(choiceButtons);
+
+	ctnButton.style.display = "block"; // Show the continue button
 }
 
 userChoice(selectedChoice);
 
-// Generate question to populate question div
-// function fillQuestion() {
-// 	const currentQuestion = quizQuestions[game.questionCounter];
-// 	questionDiv.innerText = currentQuestion.question;
-// 	
-// }
 
+// Function to display next question 
 
-// // Getting a question correct changes colour, continue button appears, count increases
-// function userChoice(selectedChoice) {
-// 	const currentQuestion = quizQuestions[game.questionCounter];
-// 	if (selectedChoice === currentQuestion.answer) {
-// 		// Handle correct answer (e.g., change color)
-// 		// Increment the score
-// 		game.score++;
-// 	} else {
-// 		// Handle incorrect answer (e.g., change color and show the correct answer)
-// 	}
-// 	// Show the continue button
-// 	ctnBtn.style.display = "block";
-// }
+function nextQuestion() {
+
+}
+	
+
 
 // // Incorrect answer changes colour, correct answershown, continue button appears
 // // Clicking continue cycles to next question, continue button removed, question number changes
@@ -237,4 +229,5 @@ module.exports = {
 	newGame,
 	showScore,
 	generateQuestions,
+	userChoice,
 };
