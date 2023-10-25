@@ -147,27 +147,22 @@ function generateQuestions(numberOfQuestions) {
 	let selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions);
 
 	
-	// Fill in the question div
-	for (let i = 0; i < selectedQuestions.length; i++) {
-		currentQuestion = selectedQuestions[currentQuestionIndex].question;
-		document.getElementById("question").innerText = currentQuestion;
-	};
-
-	// Fill in the choices divs
-	// choiceFour.forEach(choice => {
-	// 	const number = choice.
-	// 	choice.innerText = currentQuestion.question;
-	// })
+	// Loop selected questions array - is this needed? 
+	// for (let i = 0; i < selectedQuestions.length; i++) {
+		// Fill in the question div
+		currentQuestion = selectedQuestions[currentQuestionIndex];
+		document.getElementById("question").innerText = currentQuestion.question;
+		// Fill in the choices divs
+		document.getElementById("choice-one").innerText = currentQuestion.choices[0];
+		document.getElementById("choice-two").innerText = currentQuestion.choices[1];
+		document.getElementById("choice-three").innerText = currentQuestion.choices[2];
+		document.getElementById("choice-four").innerText = currentQuestion.choices[3];
+	
 
 	console.log(currentQuestion);
 	console.log(selectedQuestions);
 	return selectedQuestions;
 }
-
-function showQuestions() {
-	
-}
-
 
 
 
@@ -175,10 +170,7 @@ function showQuestions() {
 // function fillQuestion() {
 // 	const currentQuestion = quizQuestions[game.questionCounter];
 // 	questionDiv.innerText = currentQuestion.question;
-// 	choiceOne.innerText = currentQuestion.choices[0];
-// 	choiceTwo.innerText = currentQuestion.choices[1];
-// 	choiceThree.innerText = currentQuestion.choices[2];
-// 	choiceFour.innerText = currentQuestion.choices[3];
+// 	
 // }
 
 // Document loading shows start screen
