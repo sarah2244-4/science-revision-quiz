@@ -130,9 +130,8 @@ function newGame() {
 	showScore();
 	document.getElementById("btn-start").classList.add("hidden");
 	document.getElementById("game-container").classList.remove("hidden");
-	generateQuestions();
-	const totalQuestions = allQuestions.length;
-	fillQuestion();
+	let numberOfQuestions = 2;
+	generateQuestions(numberOfQuestions);
 }
 
 function showScore() {
@@ -140,22 +139,21 @@ function showScore() {
 }
 console.log(game.counter);
 
-// Generate specofic number of random ordered questions 
+// Generate specofic number of random ordered questions
 function generateQuestions(numberOfQuestions) {
 	const shuffledQuestions = questionBank.sort(() => Math.random() - 0.5);
-    // Slice the shuffled array to get the desired number of questions
-    const selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions);
+	// Slice the shuffled array to get the desired number of questions
+	const selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions);
 
-    // Make sure the first question is at index 0
-    if (selectedQuestions.length > 0) {
-        const firstQuestion = selectedQuestions[0];
-        selectedQuestions.splice(0, 1); // Remove the first question from the array
-        selectedQuestions.unshift(firstQuestion); // Put the first question back at index 0
-    }
-
-    return selectedQuestions;
+	// // Make sure the first question is at index 0
+	// if (selectedQuestions.length > 0) {
+	// 	const firstQuestion = selectedQuestions[0];
+	// 	selectedQuestions.splice(0, 1); // Remove the first question from the array
+	// 	selectedQuestions.unshift(firstQuestion); // Put the first question back at index 0
+	// }
+	console.log(selectedQuestions);
+	return selectedQuestions;
 }
-
 
 // function shuffleQuestions(array) {
 // 	// Fisher-Yates (Knuth) Shuffle algorithm
@@ -167,14 +165,14 @@ function generateQuestions(numberOfQuestions) {
 // }
 
 // Generate question to populate question div
-function fillQuestion() {
-	const currentQuestion = quizQuestions[game.questionCounter];
-	questionDiv.innerText = currentQuestion.question;
-	choiceOne.innerText = currentQuestion.choices[0];
-	choiceTwo.innerText = currentQuestion.choices[1];
-	choiceThree.innerText = currentQuestion.choices[2];
-	choiceFour.innerText = currentQuestion.choices[3];
-}
+// function fillQuestion() {
+// 	const currentQuestion = quizQuestions[game.questionCounter];
+// 	questionDiv.innerText = currentQuestion.question;
+// 	choiceOne.innerText = currentQuestion.choices[0];
+// 	choiceTwo.innerText = currentQuestion.choices[1];
+// 	choiceThree.innerText = currentQuestion.choices[2];
+// 	choiceFour.innerText = currentQuestion.choices[3];
+// }
 
 // Functions
 
@@ -183,11 +181,8 @@ function fillQuestion() {
 
 // Generate random questions from question bank
 
-
 // const numberOfQuestionsPerQuiz = 10;
 // const quizQuestions = quiz.getRandomQuestions(numberOfQuestionsPerQuiz);
-
-
 
 // 	// getRandomQuestions();
 // 	// for (let i = 0; i < quizQuestions.length; i++) {
@@ -235,4 +230,5 @@ module.exports = {
 	game,
 	newGame,
 	showScore,
+	generateQuestions,
 };

@@ -2,7 +2,7 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, showScore } = require("./game");
+const { game, newGame, showScore, generateQuestions } = require("./game");
 
 beforeAll(() => {
 	let fs = require("fs");
@@ -17,6 +17,7 @@ describe("new game function works correctly", () => {
 		game.counter = 2;
 		document.getElementById("current-score").innerText = "2";
 		newGame();
+		numberOfQuestions = 2;
 	});
 	test("score should be set to 0", () => {
 		expect(game.counter).toEqual(0);
@@ -33,6 +34,12 @@ describe("new game function works correctly", () => {
 		expect(
 			document.getElementById("game-container").classList.contains("hidden")
 		).toBe(false);
+	});
+	test("generate 10 random questions", () => {
+		expect(generateQuestions(numberOfQuestions).length).toBe(numberOfQuestions);
+	});
+	test("question div displays generated question", () => {
+		expect(document.getElementById("question").innerText).toBe(questionBank);
 	});
 });
 
