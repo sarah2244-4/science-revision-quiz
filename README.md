@@ -18,11 +18,16 @@ Users who access the application want to be able to:
 
 ### Manual Testing
 - I used Chrome Dev Tools to find errors. 
-- If something wasn't working, added in console.log(") to see if that w
+- I added in console.log(") to functions during development to see what was displayed. 
+- To test `function generateQuestions(numberOfQuestions)` I changed the `numberOfQuestions` to different numbers and checked the console that the correct length array was produced. 
+    - I also refreshed the browser to check the questions were different each time to ensure shuffling was working. 
+- Changing `currentQuestionIndex` to above 1 didn't change the question displayed when tested in the `newGame()` function. 
+    - When this was moved above the `generateQuestions(numberOfQuestions)` this changed the question index displayed.
 
 
 #### Testing User Stories
 
 ### Automated Testing 
-
-- Tests in jest wouldn't work if functions used global variables - I had to redefine them inside the functions. 
+- For automated tests I used Jest.
+- Tests in jest wouldn't work if functions used variables defined globally - I had to redefine them inside the functions. 
+- selectedQuestions was not defined in jest.

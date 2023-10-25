@@ -53,3 +53,15 @@ describe("new game function works correctly", () => {
 	});
 });
 
+describe("new game function works correctly", () => {
+	beforeAll(() => {
+		game.counter = 2;
+		document.getElementById("current-score").innerText = "2";
+		newGame();
+		numberOfQuestions = 2;
+	});
+	test("score should be set to 0", () => {
+		expect(game.counter).toEqual(0);
+	});
+});
+

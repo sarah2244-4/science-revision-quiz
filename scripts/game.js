@@ -127,12 +127,12 @@ document.addEventListener("DOMContentLoaded", () => {
 function newGame() {
 	game.counter = 0;
 	game.questionCounter = 0;
+	currentQuestionIndex = 1;
 	showScore();
 	document.getElementById("btn-start").classList.add("hidden");
 	document.getElementById("game-container").classList.remove("hidden");
 	let numberOfQuestions = 2;
 	generateQuestions(numberOfQuestions);
-	currentQuestionIndex = 0;
 }
 
 function showScore() {
@@ -173,19 +173,6 @@ function generateQuestions(numberOfQuestions) {
 // 	
 // }
 
-// Document loading shows start screen
-// window.onload = startScreen();
-
-// 	// getRandomQuestions();
-// 	// for (let i = 0; i < quizQuestions.length; i++) {
-// 	// 	const question = quizQuestions[i];
-// 	// 	choiceOne.innerText = `${question.choices[0]}`;
-// 	// 	choiceTwo.innerText = `${question.choices[1]}`;
-// 	// 	choiceThree.innerText = `${question.choices[2]}`;
-// 	// 	choiceFour.innerText = `${question.choices[3]}`;
-// 	// }
-// }
-// fillQuestions();
 
 // // Getting a question correct changes colour, continue button appears, count increases
 // function userChoice(selectedChoice) {
