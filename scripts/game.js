@@ -120,14 +120,23 @@ let game = {
 document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("btn-start").addEventListener("click", newGame);
 });
+choiceOne.addEventListener("click", () => userChoice(choiceOne));
+choiceTwo.addEventListener("click", () => userChoice(choiceTwo));
+choiceThree.addEventListener("click", () => userChoice(choiceThree));
+choiceFour.addEventListener("click", () => userChoice(choiceFour));
+
+const choiceButtons = document.querySelectorAll(".btn-choice");
+choiceButtons.forEach((choice) => {
+	choice.disabled = false;
+});
 
 // ctnButton.addEventListener("click", nextQuestion);
 
 // Clicking start game presents game screen
 function newGame() {
 	game.counter = 0;
-	game.questionCounter = 0;
-	currentQuestionIndex = 1;
+	game.questionCounter = 1;
+	currentQuestionIndex = 0;
 	showScore();
 	document.getElementById("btn-start").classList.add("hidden");
 	document.getElementById("game-container").classList.remove("hidden");
@@ -137,8 +146,8 @@ function newGame() {
 
 function showScore() {
 	document.getElementById("current-score").innerText = `${game.counter}`;
+	console.log(game.counter);
 }
-console.log(game.counter);
 
 // Generate specific number of random ordered questions
 function generateQuestions(numberOfQuestions) {
@@ -146,25 +155,44 @@ function generateQuestions(numberOfQuestions) {
 	// Slice the shuffled array to get the desired number of questions
 	let selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions);
 
-	
-	// Loop selected questions array - is this needed? 
+	// Loop selected questions array - is this needed?
 	// for (let i = 0; i < selectedQuestions.length; i++) {
-		// Fill in the question div
-		currentQuestion = selectedQuestions[currentQuestionIndex];
-		document.getElementById("question").innerText = currentQuestion.question;
-		// Fill in the choices divs
-		document.getElementById("choice-one").innerText = currentQuestion.choices[0];
-		document.getElementById("choice-two").innerText = currentQuestion.choices[1];
-		document.getElementById("choice-three").innerText = currentQuestion.choices[2];
-		document.getElementById("choice-four").innerText = currentQuestion.choices[3];
-	
+	// Fill in the question div
+	currentQuestion = selectedQuestions[currentQuestionIndex];
+	document.getElementById("question").innerText = currentQuestion.question;
+	// Fill in the choices divs
+	document.getElementById("choice-one").innerText = currentQuestion.choices[0];
+	document.getElementById("choice-two").innerText = currentQuestion.choices[1];
+	document.getElementById("choice-three").innerText =
+		currentQuestion.choices[2];
+	document.getElementById("choice-four").innerText = currentQuestion.choices[3];
 
 	console.log(currentQuestion);
 	console.log(selectedQuestions);
 	return selectedQuestions;
 }
 
+// Function for correct answer
+function userChoice(selectedChoice) {
+	const choiceButtons = document.querySelectorAll(".btn-choice");
+	choiceButtons.forEach((choice) => {
+		choice.disabled = true;
+	});
 
+	if (selectedChoice.innerText === currentQuestion.answer) {
+		game.counter++;
+		selectedChoice.classList.add("green");
+	} else {
+		selectedChoice.classList.add("red");
+	}
+	console.log(currentQuestion.answer);
+	console.log(selectedChoice.innerText);
+	console.log(game.counter);
+	showScore();
+	console.log(choiceButtons);
+}
+
+userChoice(selectedChoice);
 
 // Generate question to populate question div
 // function fillQuestion() {

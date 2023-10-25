@@ -125,6 +125,10 @@ header h1 {
     text-align: start; */
 }
 
+.btn-choice[disabled] {
+    pointer-events: none;
+  }
+
 .choice-letter {
     display: inline-block ;
 }
