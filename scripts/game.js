@@ -106,6 +106,8 @@ let choiceOne = document.getElementById("choice-one");
 let choiceTwo = document.getElementById("choice-two");
 let choiceThree = document.getElementById("choice-three");
 let choiceFour = document.getElementById("choice-four");
+
+let selectedQuestions = [];
 let currentQuestionIndex = 0;
 
 // Quiz object
@@ -116,19 +118,25 @@ let game = {
 	questionCounter: 0,
 };
 
-
 // Event Listeners
 
 document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("btn-start").addEventListener("click", newGame);
 });
-document.getElementById("choice-one").addEventListener("click", () => userChoice(choiceOne));
-document.getElementById("choice-two").addEventListener("click", () => userChoice(choiceTwo));
-document.getElementById("choice-three").addEventListener("click", () => userChoice(choiceThree));
-document.getElementById("choice-four").addEventListener("click", () => userChoice(choiceFour));
+document
+	.getElementById("choice-one")
+	.addEventListener("click", () => userChoice(choiceOne));
+document
+	.getElementById("choice-two")
+	.addEventListener("click", () => userChoice(choiceTwo));
+document
+	.getElementById("choice-three")
+	.addEventListener("click", () => userChoice(choiceThree));
+document
+	.getElementById("choice-four")
+	.addEventListener("click", () => userChoice(choiceFour));
 
 document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
-
 
 // Function to start new game when clicking start game
 function newGame() {
@@ -142,7 +150,6 @@ function newGame() {
 	generateQuestions(numberOfQuestions); // generates questions
 }
 
-
 // Function to display the current score
 
 function showScore() {
@@ -150,12 +157,11 @@ function showScore() {
 	console.log(game.counter);
 }
 
-
 // Function to generate specific number of random ordered questions
 
 function generateQuestions(numberOfQuestions) {
 	let shuffledQuestions = questionBank.sort(() => Math.random() - 0.5);
-	let selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions); // Slice the shuffled array to get the desired number of questions
+	selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions); // Slice the shuffled array to get the desired number of questions
 
 	// Loop selected questions array - is this needed?
 
@@ -173,7 +179,6 @@ function generateQuestions(numberOfQuestions) {
 	return selectedQuestions;
 }
 
-
 // Function for choice selected
 
 function userChoice(selectedChoice) {
@@ -188,24 +193,49 @@ function userChoice(selectedChoice) {
 	} else {
 		selectedChoice.classList.add("red"); // If answer is incorrect, turn the button red
 	}
+
 	console.log(currentQuestion.answer);
 	console.log(selectedChoice.innerText);
 	console.log(game.counter);
 	showScore();
-	console.log(choiceButtons);
 
 	ctnButton.style.display = "block"; // Show the continue button
 }
 
 userChoice(selectedChoice);
 
-
-// Function to display next question 
+// Function to display next question
 
 function nextQuestion() {
+	if (currentQuestionIndex < selectedQuestions.length - 1) {
+		currentQuestionIndex++;
+		game.questionCounter++;
+		const choiceButtons = document.querySelectorAll(".btn-choice");
+		choiceButtons.forEach((choice) => {
+			choice.disabled = false;
+			choice.classList.remove("red", "green"); // remove color from previous question
+		});
 
+		console.log(choiceButtons[0].classList);
+		console.log(choiceButtons[1].classList);
+		console.log(choiceButtons[2].classList);
+		console.log(choiceButtons[3].classList);
+
+		// Display the next question
+		showNextQuestion();
+	} else {
+		// something else
+	}
 }
-	
+
+function showNextQuestion() {
+	const nextQuestion = selectedQuestions[currentQuestionIndex];
+	document.getElementById("question").innerText = nextQuestion.question;
+	document.getElementById("choice-one").innerText = nextQuestion.choices[0];
+	document.getElementById("choice-two").innerText = nextQuestion.choices[1];
+	document.getElementById("choice-three").innerText = nextQuestion.choices[2];
+	document.getElementById("choice-four").innerText = nextQuestion.choices[3];
+}
 
 
 // // Incorrect answer changes colour, correct answershown, continue button appears
