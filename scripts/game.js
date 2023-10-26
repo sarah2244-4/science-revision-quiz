@@ -109,6 +109,7 @@ let choiceFour = document.getElementById("choice-four");
 
 let selectedQuestions = [];
 let currentQuestionIndex = 0;
+let selectedChoice;
 
 // Quiz object
 
@@ -152,6 +153,7 @@ function newGame() {
 	document.getElementById("game-container").classList.remove("hidden");
 	let numberOfQuestions = 2; // displays number of questions
 	generateQuestions(numberOfQuestions); // generates questions
+	userChoice(selectedChoice);
 }
 
 // Function to display the current score
@@ -180,6 +182,7 @@ function generateQuestions(numberOfQuestions) {
 
 	console.log(currentQuestion);
 	console.log(selectedQuestions);
+
 	return selectedQuestions;
 }
 
@@ -206,8 +209,6 @@ function userChoice(selectedChoice) {
 	ctnButton.style.display = "block"; // Show the continue button
 }
 
-userChoice(selectedChoice);
-
 // Function to display next question
 
 function nextQuestion() {
@@ -215,10 +216,13 @@ function nextQuestion() {
 		currentQuestionIndex++;
 		game.questionCounter++;
 
+		const answerButton = document.querySelectorAll(".choice-answer");
+		answerButton.forEach((choice) => {
+			choice.classList.remove("red", "green"); // Remove color from previous question
+		});
 		const choiceButtons = document.querySelectorAll(".btn-choice");
 		choiceButtons.forEach((choice) => {
 			choice.disabled = false;
-			choice.classList.remove("red", "green"); // Remove color from previous question
 		});
 
 		console.log(choiceButtons[0].classList);
@@ -229,7 +233,9 @@ function nextQuestion() {
 		// Display the next question
 		showNextQuestion();
 	} else {
-		// something else
+		if (currentQuestionIndex == selectedQuestions.length - 1) {
+			document.getElementById("btn-ctn").addEventListener("click", endQuiz);
+		}
 	}
 }
 
@@ -257,6 +263,13 @@ function showNextQuestion() {
 // 	}
 // }
 // //
+
+function endQuiz() {
+	const endScreen = document.getElementById("quiz-end");
+	endScreen.innerHTML = `
+	<h2>Well done!</h2>
+	<p>You got ${game.counter} out of ${numberOfQuestions}`;
+}
 
 module.exports = {
 	game,
