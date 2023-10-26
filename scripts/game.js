@@ -110,6 +110,7 @@ let choiceFour = document.getElementById("choice-four");
 let selectedQuestions = [];
 let currentQuestionIndex = 0;
 let selectedChoice;
+let numberOfQuestions;
 
 // Quiz object
 
@@ -124,18 +125,22 @@ let game = {
 document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("btn-start").addEventListener("click", newGame);
 });
-document
-	.getElementById("choice-one")
-	.addEventListener("click", () => userChoice(choiceOne));
-document
-	.getElementById("choice-two")
-	.addEventListener("click", () => userChoice(choiceTwo));
-document
-	.getElementById("choice-three")
-	.addEventListener("click", () => userChoice(choiceThree));
-document
-	.getElementById("choice-four")
-	.addEventListener("click", () => userChoice(choiceFour));
+document.getElementById("choice-one").addEventListener("click", () => {
+	userChoice(choiceOne);
+	selectedChoice = choiceOne;
+});
+document.getElementById("choice-two").addEventListener("click", () => {
+	userChoice(choiceTwo);
+	selectedChoice = choiceTwo;
+});
+document.getElementById("choice-three").addEventListener("click", () => {
+	userChoice(choiceThree);
+	selectedChoice = choiceThree;
+});
+document.getElementById("choice-four").addEventListener("click", () => {
+	userChoice(choiceFour);
+	selectedChoice = choiceFour;
+});
 
 document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
 
@@ -151,9 +156,8 @@ function newGame() {
 	showScore(); // displays score from counter
 	document.getElementById("btn-start").classList.add("hidden"); // hides start button
 	document.getElementById("game-container").classList.remove("hidden");
-	let numberOfQuestions = 2; // displays number of questions
+	numberOfQuestions = 5; // displays number of questions
 	generateQuestions(numberOfQuestions); // generates questions
-	userChoice(selectedChoice);
 }
 
 // Function to display the current score
@@ -192,6 +196,7 @@ function userChoice(selectedChoice) {
 	const choiceButtons = document.querySelectorAll(".btn-choice");
 	choiceButtons.forEach((choice) => {
 		choice.disabled = true;
+		choice.classList.remove("green", "red");
 	}); // Disable the choices once clicked
 
 	if (selectedChoice.innerText === currentQuestion.answer) {
@@ -212,10 +217,10 @@ function userChoice(selectedChoice) {
 // Function to display next question
 
 function nextQuestion() {
-	if (currentQuestionIndex < selectedQuestions.length - 1) {
-		currentQuestionIndex++;
-		game.questionCounter++;
-
+	currentQuestionIndex++;
+	game.questionCounter++;
+	currentQuestion = selectedQuestions[currentQuestionIndex];
+	if (currentQuestionIndex < selectedQuestions.length) {
 		const answerButton = document.querySelectorAll(".choice-answer");
 		answerButton.forEach((choice) => {
 			choice.classList.remove("red", "green"); // Remove color from previous question
@@ -225,17 +230,11 @@ function nextQuestion() {
 			choice.disabled = false;
 		});
 
-		console.log(choiceButtons[0].classList);
-		console.log(choiceButtons[1].classList);
-		console.log(choiceButtons[2].classList);
-		console.log(choiceButtons[3].classList);
-
+		console.log(selectedChoice);
 		// Display the next question
 		showNextQuestion();
 	} else {
-		if (currentQuestionIndex == selectedQuestions.length - 1) {
-			document.getElementById("btn-ctn").addEventListener("click", endQuiz);
-		}
+		endQuiz();
 	}
 }
 
@@ -247,22 +246,6 @@ function showNextQuestion() {
 	document.getElementById("choice-three").innerText = nextQuestion.choices[2];
 	document.getElementById("choice-four").innerText = nextQuestion.choices[3];
 }
-
-// // Incorrect answer changes colour, correct answershown, continue button appears
-// // Clicking continue cycles to next question, continue button removed, question number changes
-// function nextQuestion() {
-// 	game.questionCounter++;
-// 	if (game.questionCounter < questionBank.length) {
-// 		fillQuestions();
-// 		// Clear any styling from the previous question
-// 		// Hide the continue button
-// 		ctnBtn.style.display = "none";
-// 	} else {
-// 		// Handle the end of the quiz (e.g., show the final score)
-// 		// You can add code to display the final score or perform any other action
-// 	}
-// }
-// //
 
 function endQuiz() {
 	const endScreen = document.getElementById("quiz-end");
