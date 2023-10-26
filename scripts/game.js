@@ -112,7 +112,7 @@ let currentQuestionIndex = 0;
 let selectedChoice;
 let numberOfQuestions;
 
-// Quiz object
+// Qame object
 
 let game = {
 	counter: 0,
@@ -144,9 +144,7 @@ document.getElementById("choice-four").addEventListener("click", () => {
 
 document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
 
-document.getElementById(
-	"question-number"
-).innerText = `Question ${game.questionCounter}`;
+
 
 // Function to start new game when clicking start game
 function newGame() {
@@ -154,17 +152,19 @@ function newGame() {
 	game.questionCounter = 1; // resets question number to 1
 	currentQuestionIndex = 0; // resets current question index from array to 0
 	showScore(); // displays score from counter
-	document.getElementById("btn-start").classList.add("hidden"); // hides start button
+	document.getElementById("start-container").classList.add("hidden"); // hides start button
 	document.getElementById("game-container").classList.remove("hidden");
 	numberOfQuestions = 5; // displays number of questions
 	generateQuestions(numberOfQuestions); // generates questions
+	document.getElementById(
+		"question-number"
+	).innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
 }
 
 // Function to display the current score
 
 function showScore() {
 	document.getElementById("current-score").innerText = `${game.counter}`;
-	console.log(game.counter);
 }
 
 // Function to generate specific number of random ordered questions
@@ -173,9 +173,6 @@ function generateQuestions(numberOfQuestions) {
 	let shuffledQuestions = questionBank.sort(() => Math.random() - 0.5);
 	selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions); // Slice the shuffled array to get the desired number of questions
 
-	// Loop selected questions array - is this needed?
-
-	// for (let i = 0; i < selectedQuestions.length; i++) {
 	currentQuestion = selectedQuestions[currentQuestionIndex];
 	document.getElementById("question").innerText = currentQuestion.question; // Display the question in the question div
 	document.getElementById("choice-one").innerText = currentQuestion.choices[0]; // Display the choices in the choice buttons
@@ -183,9 +180,6 @@ function generateQuestions(numberOfQuestions) {
 	document.getElementById("choice-three").innerText =
 		currentQuestion.choices[2];
 	document.getElementById("choice-four").innerText = currentQuestion.choices[3];
-
-	console.log(currentQuestion);
-	console.log(selectedQuestions);
 
 	return selectedQuestions;
 }
@@ -205,10 +199,6 @@ function userChoice(selectedChoice) {
 	} else {
 		selectedChoice.classList.add("red"); // If answer is incorrect, turn the button red
 	}
-
-	console.log(currentQuestion.answer);
-	console.log(selectedChoice.innerText);
-	console.log(game.counter);
 	showScore();
 
 	ctnButton.style.display = "block"; // Show the continue button
@@ -219,7 +209,11 @@ function userChoice(selectedChoice) {
 function nextQuestion() {
 	currentQuestionIndex++;
 	game.questionCounter++;
+	document.getElementById(
+		"question-number"
+	).innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
 	currentQuestion = selectedQuestions[currentQuestionIndex];
+
 	if (currentQuestionIndex < selectedQuestions.length) {
 		const answerButton = document.querySelectorAll(".choice-answer");
 		answerButton.forEach((choice) => {
@@ -230,9 +224,7 @@ function nextQuestion() {
 			choice.disabled = false;
 		});
 
-		console.log(selectedChoice);
-		// Display the next question
-		showNextQuestion();
+		showNextQuestion(); // Display the next question
 	} else {
 		endQuiz();
 	}
