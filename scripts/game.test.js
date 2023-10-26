@@ -2,7 +2,15 @@
  * @jest-environment jsdom
  */
 
-const { game, newGame, showScore, generateQuestions } = require("./game");
+const {
+	game,
+	newGame,
+	showScore,
+	generateQuestions,
+	userChoice,
+	nextQuestion,
+	showNextQuestion,
+} = require("./game");
 
 beforeAll(() => {
 	let fs = require("fs");
@@ -55,13 +63,11 @@ describe("new game function works correctly", () => {
 
 describe("correct answer function works correctly", () => {
 	beforeAll(() => {
+		selectedChoice.innerText === currentQuestion.answer;
 		game.counter = 0;
-		document.getElementById("current-score").innerText = "0";
 	});
 	test("correct choice box adds correct class", () => {
-		expect(document.getElementById("btn-choice"))
-			.classList.contains(correct)
-			.toBe(true);
+		expect(selectedChoice).classList.contains(green).toBe(true);
 	});
 });
 

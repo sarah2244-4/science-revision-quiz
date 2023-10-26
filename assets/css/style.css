@@ -1,10 +1,11 @@
 /* Global styles */
 
 :root {
-    --color-1: #22FFD3;
-    --color-2: #6BBAA4;
-    --color-3: #C7FCEB;
-    --color-4: #4034A4;
+    --color-1: #f0cea0;
+    --color-2: #f3a712;
+    --color-3: #db2b39;
+    --color-4: #29335c;
+    --color-5: #534d41;
     --white: #F7EBFF;
     --correct-color: #;
     --incorrect-color: #;
@@ -18,8 +19,8 @@
 }
 
 body {
-    background-color: var(--white);
-    color: var(--color-4);
+    background-color: var(--color-4);
+    color: var(--white);
 }
 
 header {
@@ -68,32 +69,32 @@ header h1 {
 
 /* Game screen */
 
-.game-container {
-    width: 80%;
-    background-color: transparent;
-    color: black;
-    transform: translate(-50%, -50%);
-    margin-top: 10vh;
+#game-container {
+    background-color: var(--white);
+    color: var(--color-4);
     text-align: center;
+    width: 80%;
+    height: 60vh;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 5px;
 }
 
 .game-header {
     margin-bottom: 2em;
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    text-align: start;
     padding-bottom: 0.6em;
-    background-color:  var(--color-4);
+    background-image: linear-gradient(160deg, #f0cea0aa, #f0cea0, #f3a712);
     color: white;
-    border-radius: 10px;
+    border-radius: 5px;
+    padding-left: 10px;
+    font-size: 1.2rem;
+    color: var(--color-5);
+    font-weight: bolder;
 }
 
-.choice-container {
-    display: flex;
-    margin-bottom: 10px;
-    width: 100%;
-    
-}
 
 /* @media only screen and (min-width: 500px) {
     .choice-container {
@@ -110,11 +111,10 @@ header h1 {
 } */
 
 
-.choice-box {
-    display: flex;
-    margin-bottom: 10px;
+.btn-choice {
+    margin: 2vh 0;
     width: 100%;
-    
+}
     /* border-radius: 10px;
     display: flex;
     align-items: center;
@@ -129,12 +129,27 @@ header h1 {
     pointer-events: none;
   }
 
-.choice-letter {
-    display: inline-block ;
-}
-
 .choice-answer {
     display: inline-block ;
+    font-weight: 300;
+}
+
+#question {
+    font-weight: 500;
+    font-size: 1.6rem;
+}
+
+.btn-choice {
+    position: relative;
+    width: 100%;
+    display: block;
+    background-color: var(--color-2);
+    border: 2px solid var(--color-5);
+    border-radius: 5px;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.2rem;
 }
 
 .red {
@@ -149,4 +164,7 @@ footer {
     position: fixed;
     bottom: 0;
     padding: 10px;
+    background-color: var(--color-4);
+    width: 100%;
+    color: var(--white);
 }

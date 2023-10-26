@@ -115,7 +115,7 @@ let currentQuestionIndex = 0;
 let game = {
 	counter: 0,
 	currentQuestion: {},
-	questionCounter: 0,
+	questionCounter: 1,
 };
 
 // Event Listeners
@@ -137,6 +137,10 @@ document
 	.addEventListener("click", () => userChoice(choiceFour));
 
 document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
+
+document.getElementById(
+	"question-number"
+).innerText = `Question ${game.questionCounter}`;
 
 // Function to start new game when clicking start game
 function newGame() {
@@ -210,10 +214,11 @@ function nextQuestion() {
 	if (currentQuestionIndex < selectedQuestions.length - 1) {
 		currentQuestionIndex++;
 		game.questionCounter++;
+
 		const choiceButtons = document.querySelectorAll(".btn-choice");
 		choiceButtons.forEach((choice) => {
 			choice.disabled = false;
-			choice.classList.remove("red", "green"); // remove color from previous question
+			choice.classList.remove("red", "green"); // Remove color from previous question
 		});
 
 		console.log(choiceButtons[0].classList);
@@ -237,7 +242,6 @@ function showNextQuestion() {
 	document.getElementById("choice-four").innerText = nextQuestion.choices[3];
 }
 
-
 // // Incorrect answer changes colour, correct answershown, continue button appears
 // // Clicking continue cycles to next question, continue button removed, question number changes
 // function nextQuestion() {
@@ -260,4 +264,6 @@ module.exports = {
 	showScore,
 	generateQuestions,
 	userChoice,
+	nextQuestion,
+	showNextQuestion,
 };
