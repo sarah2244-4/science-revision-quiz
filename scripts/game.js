@@ -253,6 +253,10 @@ function endQuiz() {
 	<h2>Well done!</h2>
 	<p>You got ${game.counter} out of ${numberOfQuestions}`;
 	endScreen.classList.remove("hidden");
+	ctnButton.innerText = "Try Again"; // Add arrow icon
+	ctnButton.addEventListener("click", function () {
+		window.location.reload();
+	});
 }
 
 module.exports = {
