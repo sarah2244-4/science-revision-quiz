@@ -23,7 +23,10 @@ Users who access the application want to be able to:
     - I also refreshed the browser to check the questions were different each time to ensure shuffling was working. 
 - Changing `currentQuestionIndex` to above 1 didn't change the question displayed when tested in the `newGame()` function. 
     - When this was moved above the `generateQuestions(numberOfQuestions)` this changed the question index displayed.
-
+- Below 784px the well done message spilled out of the container
+    - Added media query to make message container larger
+- Below 486px the bottom choice and continue button overlapped 
+    - Added in media query to bring the game container higher on the screen
 
 #### Testing User Stories
 

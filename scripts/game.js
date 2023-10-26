@@ -252,6 +252,7 @@ function endQuiz() {
 	endScreen.innerHTML = `
 	<h2>Well done!</h2>
 	<p>You got ${game.counter} out of ${numberOfQuestions}`;
+	endScreen.classList.remove("hidden");
 }
 
 module.exports = {
