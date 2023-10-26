@@ -125,19 +125,19 @@ let game = {
 document.addEventListener("DOMContentLoaded", () => {
 	document.getElementById("btn-start").addEventListener("click", newGame);
 });
-document.getElementById("choice-one").addEventListener("click", () => {
+document.getElementById("btn-one").addEventListener("click", () => {
 	userChoice(choiceOne);
 	selectedChoice = choiceOne;
 });
-document.getElementById("choice-two").addEventListener("click", () => {
+document.getElementById("btn-two").addEventListener("click", () => {
 	userChoice(choiceTwo);
 	selectedChoice = choiceTwo;
 });
-document.getElementById("choice-three").addEventListener("click", () => {
+document.getElementById("btn-three").addEventListener("click", () => {
 	userChoice(choiceThree);
 	selectedChoice = choiceThree;
 });
-document.getElementById("choice-four").addEventListener("click", () => {
+document.getElementById("btn-four").addEventListener("click", () => {
 	userChoice(choiceFour);
 	selectedChoice = choiceFour;
 });
