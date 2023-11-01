@@ -237,3 +237,22 @@ footer {
         height: 80vh;
     }
 }
+
+/* 404 page */
+
+.error-h1 {
+    text-align: center;
+    font-size: 3rem;
+    padding-top: 8vh;
+}
+
+.error-p {
+    text-align: center;
+}
+
+.error-link {
+    text-align: center;
+    text-decoration: none;
+    color: var(--color-3);
+    font-weight: bolder;
+}
