@@ -76,7 +76,7 @@ header h1 {
     font-weight: 500;
     font-size: 1.2rem;
     width: 90%;
-    margin: 0 auto 5vh auto;
+    margin: 0 auto 3vh auto;
     padding: 10px;
     color: black;
 }
@@ -285,6 +285,15 @@ footer {
     }
     #game-container, #start-container {
         height: 80vh;
+    }
+    .btn-number{
+        font-size: 0.8rem;
+        height: 30px;
+        margin: 3px;
+    }
+    #btn-start {
+        height: 100px;
+        margin-top: 5px;
     }
 }
 
