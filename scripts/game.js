@@ -195,9 +195,9 @@ function userChoice(selectedChoice) {
 
 	if (selectedChoice.innerText === currentQuestion.answer) {
 		game.counter++;
-		selectedChoice.classList.add("green"); // If answer is correct, turn the button green
+		selectedChoice.parentElement.classList.add("green"); // If answer is correct, turn the button green
 	} else {
-		selectedChoice.classList.add("red"); // If answer is incorrect, turn the button red
+		selectedChoice.parentElement.classList.add("red"); // If answer is incorrect, turn the button red
 	}
 	showScore();
 
@@ -217,7 +217,7 @@ function nextQuestion() {
 	if (currentQuestionIndex < selectedQuestions.length) {
 		const answerButton = document.querySelectorAll(".choice-answer");
 		answerButton.forEach((choice) => {
-			choice.classList.remove("red", "green"); // Remove color from previous question
+			choice.parentElement.classList.remove("red", "green"); // Remove color from previous question
 		});
 		const choiceButtons = document.querySelectorAll(".btn-choice");
 		choiceButtons.forEach((choice) => {

@@ -112,21 +112,6 @@ br {
     font-weight: bolder;
 }
 
-
-/* @media only screen and (min-width: 500px) {
-    .choice-container {
-        position: relative;
-        display: grid;
-        width: 80px;
-        height: 40%;
-        grid-row: auto auto;
-        grid-template-columns: 30rem 30rem;
-        grid-column-gap: 25px;
-        grid-row-gap: 25px;
-    }
-    
-} */
-
 .choice-answer {
     display: inline-block ;
     font-weight: 300;
@@ -153,7 +138,6 @@ br {
 }
 
 .btn-choice:hover, .btn-choice:active {
-    background-color: var(--color-1);
     box-shadow: none;
     transform: translate( 0.5px, 0.5px);
 }
@@ -183,11 +167,13 @@ br {
 
 
 .red {
-    background-color: red;
+    background-color: var(--color-3);
+    color: white;
 }
 
 .green {
-    background-color: green;
+    background-color: #2e8b57;
+    color: white;
 }
 
 /* Well done div */
@@ -218,7 +204,7 @@ footer {
 
 @media only screen and (max-width: 768px) {
     .btn-choice {
-        font-size: 0.8rem;
+        font-size: 1rem;
     }
     #question {
         font-size: 1.2rem;
@@ -237,6 +223,9 @@ footer {
         bottom: 4px;
         right: 4px;
         font-size: 1.2rem;
+    }
+    .btn-choice {
+        font-size: 0.8rem;
     }
     header h1 {
         font-size: 1.4rem;
