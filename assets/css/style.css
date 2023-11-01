@@ -1,19 +1,21 @@
 /* Global styles */
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700;800;900&family=Shadows+Into+Light&display=swap');
+
 :root {
     --color-1: #f0cea0;
     --color-2: #F3A712;
     --color-3: #DC3240;
     --color-4: #29335c;
     --color-5: #2F2823;
-    --white: #FFF;
+    --white: #fffefa;
     --button: #E1515D;
 }
 
 * {
     margin: 0;
     padding: 0;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Nunito, Tahoma, sans-serif;
     border-radius: 7px;
 }
 
@@ -32,6 +34,7 @@ header {
 
 header h1 {
     text-align: center;
+    font-weight: 800;
 }
 
 .hidden {
@@ -43,19 +46,10 @@ header h1 {
 }
 
 .bold {
-    font-weight: bold;
+    font-weight: 800;
 }
 
 /* Start screen */
-
-#start-container {
-    width: 70%;
-    background-color: var(--white);
-    margin: auto;
-    height: 75vh;
-    text-align: center;
-    padding: 10px; 
-}
 
 #btn-start {
     background-color: var(--color-3);
@@ -72,6 +66,7 @@ header h1 {
 #btn-start:hover, #btn-start:active {
     transform: translate( 1px, 1px);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color: #cc3240;
 }
 
 #start-container p {
@@ -91,7 +86,7 @@ br {
 
 /* Game screen */
 
-#game-container {
+#game-container, #start-container {
     background-color: var(--white);
     color: var(--color-4);
     text-align: center;
@@ -112,18 +107,18 @@ br {
     padding: 2px 10px;
     font-size: 1.2rem;
     color: var(--color-5);
-    font-weight: bolder;
+    font-weight: 900;
 }
 
 .choice-answer {
     display: inline-block ;
-    font-weight: 300;
+    font-weight: 400;
 }
 
 #question {
     font-weight: 800;
     font-size: 1.6rem;
-    margin-bottom: 2vh;
+    margin: 2vh 0 2vh 0;
 }
 
 .btn-choice {
@@ -145,6 +140,10 @@ br {
     transform: translate( 0.5px, 0.5px);
 }
 
+.btn-choice:hover {
+    background-color: #e69f12;
+}
+
 .btn-choice[disabled] {
     pointer-events: none;
 }
@@ -161,11 +160,13 @@ br {
     position: absolute;
     bottom: 4%;
     right: 4%;
+    font-weight: 600;
 }
 
 #btn-ctn:hover, #btn-ctn:active {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transform: translate( 1px, 1px);
+    background-color: #cc3240;
 }
 
 
@@ -201,6 +202,7 @@ footer {
     background-color: none;
     width: 100%;
     color: var(--white);
+    font-weight: 100;
 }
 
 /* Small screen responsivity */
@@ -236,7 +238,7 @@ footer {
     .game-header {
         font-size: 0.8rem;
     }
-    #game-container {
+    #game-container, #start-container {
         height: 80vh;
     }
 }
@@ -257,7 +259,7 @@ footer {
     text-align: center;
     text-decoration: none;
     color: var(--color-3);
-    font-weight: bolder;
+    font-weight: 900;
     display: block;
     font-size: 2rem;
     margin-top: 20px;

@@ -36,38 +36,35 @@ The site is live, the link to this is found [HERE](https://sarah2244-4.github.io
 
 ### Goals
 
-The goal of the site is for a clear, intiuitive website that contains all relevant information for users about the photographer. 
+The goal of the site is for an intiuitive quiz that allows users to select answers and find out how well they have done.
 
-The photographer's goal is to introduce themselves and showcase a portfolio of images. They would also like to provide a way for users to communicate with them to see what they offer and find out more information or book a service. 
-
-Users want to be able to understand and intuitively navigate through the website, view images easily, find out more about the photographer and contact them for more information. 
+Users want to be able to intuitively play the quiz.
 
 ### Users
 
-Users will be adults looking for a professional photographer to shoot their event. They will be interested in viewing a selection of the photographer's images to compare to other photographers and contacting the photographer for more information. 
+Users will primarily be Key Stage 3 students (11-14 year olds) looking for a revision tool to practise answering questions before an exam. 
 
 ### New User Stories
 
 A first time user of the site wants to be able to:
-- Easily and intuitively navigate the site
-- Find out what type of photographer they are
-- Browse an existing portfolio of images
-- Navigate to the social media
-- Contact the photographer with questions or to book them
-- Book a service
+- Easily and intuitively navigate
+- See when they get an answer correct
+- Find out what the correct answer was if they got it incorrect
+- Find out what their overall score is
+- See what question they are on
 
 ### Existing User Stories
 
 An existing user wants to be able to:
-- Contact the photographer with questions or to book them
-- View up to date images
-- Find links to social media accounts
+- See if they have improved by comparing their score to previous tries
+- Answer different questions each time they have a go
+- Answer questions in a different order if they do repeat 
 
 ## Design
 
 ### Wireframes
 
-| Index Page | Gallery Page | Contact Page |
+| Start | Gameplay | End of Game |
 | :---: | :---: | :---: |
 | [Mobile](assets/images/wireframes/index-mobile.jpg) | [Mobile](assets/images/wireframes/gallery-mobile.jpg) | [Mobile](assets/images/wireframes/contact-mobile.jpg) |
 | [Tablet](assets/images/wireframes/index-tablet.jpg) | [Tablet](assets/images/wireframes/gallery-tablet.jpg) |[Tablet](assets/images/wireframes/contact-tablet.jpg)|
@@ -76,37 +73,33 @@ An existing user wants to be able to:
 
 ### Colour Scheme
 
-- The main colour scheme of the site is greyscale in order to keep it minimililstic and empahsise the coloured images. 
-- There is a pop of gold to match the colours from the logo. 
+- The site's colour scheme is based on this: 
+
+![Colour scheme](assets/images/colour-scheme.JPG)
+
+- The whole colour palette was selected using the palette generator on [Coolors](coolors.co).
+- Orange is associated with fun, therefore it was selected as a primary colour. 
+- Blue is associated with learning and respectibility, which is important so users feel they can trust the website. 
+    - It was chosen as the background colour as the colour is fairly neutral is gentle on the eyes and good for use in light and dark.
+- I used this [contrast checker](https://webaim.org/resources/contrastchecker/) to ensure elements had a high enough contrast ratio. Using this, I had to tweak a few of the colours from the colour palette chosen. 
+
 
 ### Typography
 
 - The handwritten font Shadows Into Light was chosen to provide a more personal feel. It was used on the site/business name 'Golden Ape Visual Media' and in the about me greeting and thank you message as they make the about me message and business name more personal.
 - Mukta was chosen for the rest of the site as it is a clean sans-serif font which reads clearly and fits in with the minamilistic theme. 
 
-### Imagery
-
-- The logo is a friend's existing business' existing logo. It was used with permission. 
-- All other imagery used on the webiste is from a stock webiste which is referenced in the [credits](#credits "Credits") section. 
-- Images were chosen to give a pop of colour against the greyscale theme of the website. 
-- There is one black and white image to make it stand out as a wedding image rather than a sports event image.
 
 ### Effects 
 
-- Links in the navigation bar and footer are animated to change colour when a mouse hovers over them so users know they can click them. 
-
-![Navigation links hover effect](assets/images/nav-link-hover.JPG)
-
-![Social media icons hover effect](assets/images/social-hover.JPG)
+- When the mouse hovers over a button, the shadow gets smaller and the background colour darkens to make it look like an actual button is being pressed to show that it can be clicked.
 
 ### Design choices
 
-- The website is as consistent as possible across all screen sizes. 
-- I chose to use Bootstrap to help with responsiveness as this site would likely be accessed on both mobile and desktop by different age groups.
-- I decided the gold was needed to encorporate the company's logo colours into the site.
-- It was important the gallery images could be viewed clearly as it's a main feature, which is why I made the decision to enlarge them in a modal.
-- The design is minimilistic to make it clear how to navigate the site and to put emphasis on the images to allow the pictures to speak for themselves.
-- The hero image was maintained on every page as the title for each page. The enquire button on the hero image stayed on the contact page, as when clicked the page would re-load to focus lower down on the form. 
+- The site is as consistent as possible across all screen sizes. 
+- The buttons were animated to make it clear that they could be selectable. 
+- I did not include instructions on how to play as there are many quizzes that work in the same way, which everyone will be familiar with. 
+- Originally I put the choices in a 2x2 grid as you often find, but some of the answers are fairly long so the longer stacked choice boxes are more readable. 
 
 ## Features
 
@@ -127,7 +120,7 @@ An existing user wants to be able to:
 
 ### Hero
 
-![Hero](assets/images/hero.JPG)
+
 
 - Beneath the navigation bar there is a hero image, which is the same across all main pages for consistency. 
 - It features an enquiry button to focus users attention to the fact that there is a way to enquire more and encourage more users to fill in the contact form. 
@@ -265,6 +258,7 @@ To clone the repsoitory:
 - To center the rectangle logo into a circle I used [this website](https://www.webfx.com/blog/web-design/circular-images-css/) to help me.
 - To fix the hero image overlay I used [this website](https://dzuz14.medium.com/code-a-full-width-hero-background-image-with-transparent-overlay-95d757f8ff2c) to help me.
 - I used [Coolors](https://coolors.co/) to help me come up with a colour scheme.
+- I used [WebAIM](https://webaim.org/resources/contrastchecker/) to check the contrast of the colours used on all the elements. 
 
 ### Images
 
@@ -304,6 +298,12 @@ Users who access the application want to be able to:
     - Added in media query to bring the game container higher on the screen
 - Below 768px the longer question answer spilled out of the game container and overlapped the continue button
     - Added media query to change font size 
+- It was showing red when I selected correct answers after question 1. I used 
+```
+console.log(selectedAnswer)
+console.log(answer)
+```
+which showed me that I wasn't updating the current question index in the correct place as it thought the correct answer was for the previous question. I moved the `++` and it worked.
 
 #### Testing User Stories
 
