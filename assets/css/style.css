@@ -40,6 +40,14 @@ header h1 {
     display: none;
 }
 
+.italic {
+    font-style: italic;
+}
+
+.bold {
+    font-weight: bold;
+}
+
 /* Start screen */
 
 #btn-start {
@@ -64,6 +72,19 @@ header h1 {
     text-align: center;
 }
 
+#start-container p {
+    background-color: var(--color-2);
+    font-weight: 500;
+    font-size: 1.2rem;
+    width: 55%;
+    margin: 0 auto 5vh auto;
+    padding: 10px;
+}
+
+br {
+    display: block;
+    margin-bottom: 1rem;
+}
 
 /* Game screen */
 
@@ -131,21 +152,6 @@ header h1 {
     transition: 0.5s;
 }
 
-@media only screen and (max-width: 500px) {
-    .btn-choice {
-        font-size: 0.8rem;
-    }
-    header h1 {
-        font-size: 1.4rem;
-    }
-    .game-header {
-        font-size: 0.8rem;
-    }
-    #question {
-        font-size: 1.2rem;
-    }
-}
-
 .btn-choice:hover, .btn-choice:active {
     background-color: var(--color-1);
     box-shadow: none;
@@ -206,4 +212,39 @@ footer {
     background-color: none;
     width: 100%;
     color: var(--white);
+}
+
+/* Small screen responsivity */
+
+@media only screen and (max-width: 768px) {
+    .btn-choice {
+        font-size: 0.8rem;
+    }
+    #question {
+        font-size: 1.2rem;
+    }
+    #quiz-end {
+        height: 40%;
+        padding: 15px;
+        font-size: 2rem;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    #btn-ctn {
+        height: 35px;
+        width: 150px;
+        bottom: 4px;
+        right: 4px;
+        font-size: 1.2rem;
+    }
+    header h1 {
+        font-size: 1.4rem;
+    }
+    .game-header {
+        font-size: 0.8rem;
+    }
+    #game-container {
+        height: 80vh;
+    }
 }

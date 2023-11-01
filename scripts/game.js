@@ -243,7 +243,7 @@ function endQuiz() {
 	const endScreen = document.getElementById("quiz-end");
 	endScreen.innerHTML = `
 	<h2>Well done!</h2>
-	<p>You got ${game.counter} out of ${numberOfQuestions}`;
+	<p>You got <span class="bold">${game.counter}</span> out of <span class="bold">${numberOfQuestions}</span>`;
 	endScreen.classList.remove("hidden");
 	ctnButton.innerText = "Try Again"; // Add arrow icon
 	ctnButton.addEventListener("click", function () {
