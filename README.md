@@ -105,84 +105,23 @@ An existing user wants to be able to:
 
 ### Existing Features
 
-#### Navigation Bar
+#### Start of Quiz
 
-![Navigation bar](assets/images/navigation-bar.JPG)
+- The landing page initially contains information on what the quiz is about for new users. 
+- There is a bright button in the center of the page that allows you start the quiz. If you click this you will start a quiz of 5 questions. 
+- There are two further buttons that offer the choice to answer a different number of questions once selected. They change to a contrasting colour to make it clear they have been selected.
 
-![Navigation bar for small screens](assets/images/navigation-bar-small-screens.JPG)
+#### Question Page
 
-- The logo and company name is on the left and the links are clear and easy to find on the right hand side.
-- This is the same across all pages for consistency. 
-- The logo is linked to the 'About' (home) page. 
-- Every main page for the site is linked so there is no need to use the browser back button. 
-- There is a toggle button on the navigation bar for small screens as the whole bar doesn't fit across the top. This is inuitive to use as it appears on many sites.
-- The navigation buttons are animated so that when you hover over them there is a slow colour change to make it clear users are able to click on it. 
+- This view shows users what question number they are on and how many there are to allow them to keep track of their progress.
+- It also shows users their current score. 
+- The question is the only large text on the container so it stands out.
+- The answer choices are listed. 
+  - These are animated to make it clear when the mouse hovers over them and can be selected.
+- The selected answer choices change green if correct or red if incorrect. If the selected answer is incorrect the correct answer will also turn green to show users the correct answer. 
+- Once a choice has been selected, the continue button appears, allowing users to move onto the next question. 
 
-### Hero
-
-
-
-- Beneath the navigation bar there is a hero image, which is the same across all main pages for consistency. 
-- It features an enquiry button to focus users attention to the fact that there is a way to enquire more and encourage more users to fill in the contact form. 
-- The enquire button was styled so the background was white to stand out from the background whilst also maintaining white text to fit in with the text in the navigation bar. 
-- The hero image doesn't show on the 404 page as it took away from the 404 error message, and the main aim of this page is to display the error and direct them back to an existing page. 
-- It also doesn't appear on the thank you page as a form has already been submitted by the user so the thank you message is more important than the enquiry button at this point. 
-
-#### About Page  
-
-![About me](assets/images/about-me.JPG)
-
-- The landing page gives inforamtion about the photographer so users get an introduction and are drawn into the site.
-- The about me text wraps around the image and this is responsive to all screen sizes. 
-- Small screen sizes would only have a very thin column of text next to the image, so the image appears above the text to make it more readable. 
-
-#### Image Carousel 
-
-![Image carousel](assets/images/image-carousel.JPG)
-
-- There is an image carousel that showcases a small selection of images so people can see some of the portfolio while reading the about me section without having to visit the gallery page. This should make them want to click on the gallery page to view more. 
-- The carousel does not have arrows as the images can be seen again on the gallery page. 
-- The timing was made fairly short on based on how long users were expected to look at the image before clicking elsewhere so it would change before users moved on. 
-
-#### Footer
-
-![Footer](assets/images/footer-gold.JPG)
-
-- The footer provides important contact information for users and clear social media links.
-- The background is a light gold to separate it from the body so that it subtly stands out. 
-- The social media links are coloured slightly darker to stand out and are animated to change colour when the mouse hovers over so users know they can be clicked.
-- It is responsive so the columns stack for a smaller screen size as they don't fit across the page.
-
-#### Gallery Page
-
-![Gallery page for large screens](assets/images/gallery-large-screen.JPG)
-
-![Gallery page for medium screens](assets/images/gallery-medium-screen.JPG)
-
-![Modal](assets/images/modal.JPG)
-
-- The gallery page provides a colourful porfolio of images that stand out from the rest of the website.
-- Images are thumbnails that fill the screen. These thumbnails are responsive to different page sizes so they are never too small. They stack individually in a small screen, and as the screen size gets bigger the thumbnails are in rows of 2 or 3 across.
-- When an image is clicked, it will appear larger in a modal. This is particularly useful for the larger screen sizes where it makes a large difference to the image size so users can see the image clearly to help make decision about hiring the photographer.
-
-#### Contact Page
-
-![Contact form](assets/images/contact-form.JPG)
-
-- Users can complete the contact form to enquire further about the services offered, prices or anything else. 
-- The first input field is autofocused when loaded so the contact form is loaded straight into view and users can start filling it out without clicking with their mouse. 
-- Selected inputs have a coloured box shadow so it is clear when an input is selected. This is particularly useful if a user is using the tab key to navigate the form.
-- Inputs have been marked required with an asterisk in the label. This is universally used so users will understand what this means. 
-- The borders for required inputs are red when they contain invalid information to provide a visual way of showing the input needs completing.
-
-#### Thank You Page
-
-![Thank you message](assets/images/thank-you.JPG)
-
-- This page loads when a contact form has been submitted so users recieve feedback that they have submitted their form and feel assured the photographer will respond. 
-- The handwriting font was chosen as the thank you message to provide a personal feel. 
-- Users are directed back to the home (about) page to encourage them to continue exploring the site.
-- The home link has been made clear as it is in bold and animates when a mouse hovers over it. 
+#### End of Quiz
 
 #### 404 Page
 

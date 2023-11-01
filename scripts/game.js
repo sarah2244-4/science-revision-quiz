@@ -260,7 +260,8 @@ function endQuiz() {
 	<h2>Well done!</h2>
 	<p>You got <span class="bold">${game.counter}</span> out of <span class="bold">${numberOfQuestions}</span>`;
 	endScreen.classList.remove("hidden");
-	ctnButton.innerText = "Try Again"; // Add arrow icon
+	ctnButton.innerHTML = `Try Again <i class="fa-solid fa-arrow-rotate-right"></i>`; // Add arrow icon
+	ctnButton.id = "btn-again";
 	ctnButton.addEventListener("click", function () {
 		window.location.reload();
 	});

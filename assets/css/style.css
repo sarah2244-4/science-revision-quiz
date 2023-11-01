@@ -195,6 +195,29 @@ br {
     font-size: 2.6rem;
 }
 
+#btn-again {
+    background-color: var(--color-4);
+    color: white;
+    height: 50px;
+    font-size: 1.3rem;
+    transition: 0.5s;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    width: 50%;
+    margin: auto;
+    font-weight: 600;
+    position: absolute;
+    bottom: 10%;
+    right: 25%;
+}
+
+#btn-again:hover, #btn-again:active {
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transform: translate( 1px, 1px);
+    background-color: #29334c;
+}
+
+
 footer {
     position: fixed;
     bottom: 0;
