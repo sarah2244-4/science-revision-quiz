@@ -143,9 +143,13 @@ document.getElementById("btn-four").addEventListener("click", () => {
 });
 document.getElementById("five-questions").addEventListener("click", () => {
 	numberOfQuestions = 5;
+	document.getElementById("five-questions").classList.add("active");
+	document.getElementById("ten-questions").classList.remove("active");
 });
 document.getElementById("ten-questions").addEventListener("click", () => {
 	numberOfQuestions = 10;
+	document.getElementById("ten-questions").classList.add("active");
+	document.getElementById("five-questions").classList.remove("active");
 });
 
 document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
