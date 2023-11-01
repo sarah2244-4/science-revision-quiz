@@ -110,7 +110,7 @@ let choiceFour = document.getElementById("choice-four");
 let selectedQuestions = [];
 let currentQuestionIndex = 0;
 let selectedChoice;
-let numberOfQuestions;
+let numberOfQuestions = 5;
 
 // Qame object
 
@@ -141,10 +141,14 @@ document.getElementById("btn-four").addEventListener("click", () => {
 	userChoice(choiceFour);
 	selectedChoice = choiceFour;
 });
+document.getElementById("five-questions").addEventListener("click", () => {
+	numberOfQuestions = 5;
+});
+document.getElementById("ten-questions").addEventListener("click", () => {
+	numberOfQuestions = 10;
+});
 
 document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
-
-
 
 // Function to start new game when clicking start game
 function newGame() {
@@ -154,7 +158,7 @@ function newGame() {
 	showScore(); // displays score from counter
 	document.getElementById("start-container").classList.add("hidden"); // hides start button
 	document.getElementById("game-container").classList.remove("hidden");
-	numberOfQuestions = 5; // displays number of questions
+	// displays number of questions
 	generateQuestions(numberOfQuestions); // generates questions
 	document.getElementById(
 		"question-number"
