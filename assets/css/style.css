@@ -2,14 +2,12 @@
 
 :root {
     --color-1: #f0cea0;
-    --color-2: #f3a712;
-    --color-3: #db2b39;
+    --color-2: #F3A712;
+    --color-3: #DC3240;
     --color-4: #29335c;
-    --color-5: #534d41;
-    --white: #F7EBFF;
-    --correct-color: #;
-    --incorrect-color: #;
-
+    --color-5: #2F2823;
+    --white: #FFF;
+    --button: #E1515D;
 }
 
 * {
@@ -50,6 +48,15 @@ header h1 {
 
 /* Start screen */
 
+#start-container {
+    width: 70%;
+    background-color: var(--white);
+    margin: auto;
+    height: 75vh;
+    text-align: center;
+    padding: 10px; 
+}
+
 #btn-start {
     background-color: var(--color-3);
     color: var(--white);
@@ -59,6 +66,7 @@ header h1 {
     border: none;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     transition-duration: 0.3s;
+    margin-top: 5%;
 }
 
 #btn-start:hover, #btn-start:active {
@@ -66,18 +74,14 @@ header h1 {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-#start-container {
-    margin-top: 10vh;
-    text-align: center;
-}
-
 #start-container p {
     background-color: var(--color-2);
     font-weight: 500;
     font-size: 1.2rem;
-    width: 55%;
+    width: 90%;
     margin: 0 auto 5vh auto;
     padding: 10px;
+    color: black;
 }
 
 br {
@@ -167,12 +171,12 @@ br {
 
 .red {
     background-color: var(--color-3);
-    color: white;
+    color: black;
 }
 
 .green {
     background-color: #2e8b57;
-    color: white;
+    color: black;
 }
 
 /* Well done div */
