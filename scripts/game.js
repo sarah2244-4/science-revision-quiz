@@ -188,17 +188,24 @@ function generateQuestions(numberOfQuestions) {
 
 function userChoice(selectedChoice) {
 	const choiceButtons = document.querySelectorAll(".btn-choice");
-	choiceButtons.forEach((choice) => {
+	const correctAnswer = currentQuestion.answer;
+	for (let i = 0; i < choiceButtons.length; i++) {
+		const choice = choiceButtons[i];
 		choice.disabled = true;
 		choice.classList.remove("green", "red");
-	}); // Disable the choices once clicked
+		if (choice.querySelector(".choice-answer").innerText === correctAnswer) {
+			choice.classList.add("green");
+		}
+	}
 
 	if (selectedChoice.innerText === currentQuestion.answer) {
 		game.counter++;
 		selectedChoice.parentElement.classList.add("green"); // If answer is correct, turn the button green
 	} else {
-		selectedChoice.parentElement.classList.add("red"); // If answer is incorrect, turn the button red
+		selectedChoice.parentElement.classList.add("red");
 	}
+	// If answer is incorrect, turn the button red
+
 	showScore();
 	console.log(currentQuestion.answer);
 	console.log(selectedChoice.innerText);
