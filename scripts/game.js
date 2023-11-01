@@ -200,6 +200,8 @@ function userChoice(selectedChoice) {
 		selectedChoice.parentElement.classList.add("red"); // If answer is incorrect, turn the button red
 	}
 	showScore();
+	console.log(currentQuestion.answer);
+	console.log(selectedChoice.innerText);
 
 	ctnButton.classList.remove("hidden"); // Show the continue button
 }
@@ -208,17 +210,17 @@ function userChoice(selectedChoice) {
 
 function nextQuestion() {
 	currentQuestionIndex++;
-	game.questionCounter++;
-	document.getElementById(
-		"question-number"
-	).innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
 	currentQuestion = selectedQuestions[currentQuestionIndex];
-
 	if (currentQuestionIndex < selectedQuestions.length) {
+		game.questionCounter++;
+		document.getElementById(
+			"question-number"
+		).innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
 		const answerButton = document.querySelectorAll(".choice-answer");
 		answerButton.forEach((choice) => {
 			choice.parentElement.classList.remove("red", "green"); // Remove color from previous question
 		});
+
 		const choiceButtons = document.querySelectorAll(".btn-choice");
 		choiceButtons.forEach((choice) => {
 			choice.disabled = false;
@@ -239,6 +241,7 @@ function showNextQuestion() {
 	document.getElementById("choice-three").innerText = nextQuestion.choices[2];
 	document.getElementById("choice-four").innerText = nextQuestion.choices[3];
 }
+
 
 function endQuiz() {
 	const endScreen = document.getElementById("quiz-end");
