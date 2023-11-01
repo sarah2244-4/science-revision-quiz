@@ -201,7 +201,7 @@ function userChoice(selectedChoice) {
 	}
 	showScore();
 
-	ctnButton.style.display = "block"; // Show the continue button
+	ctnButton.classList.remove("hidden"); // Show the continue button
 }
 
 // Function to display next question
@@ -223,6 +223,7 @@ function nextQuestion() {
 		choiceButtons.forEach((choice) => {
 			choice.disabled = false;
 		});
+		ctnButton.classList.add("hidden");
 
 		showNextQuestion(); // Display the next question
 	} else {
