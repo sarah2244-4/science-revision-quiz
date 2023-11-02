@@ -47,10 +47,10 @@ Users will primarily be Key Stage 3 students (11-14 year olds) looking for a rev
 ### New User Stories
 
 A first time user of the site wants to be able to:
-- Easily and intuitively navigate
-- See when they get an answer correct
-- Find out what the correct answer was if they got it incorrect
-- Find out what their overall score is
+- Easily and intuitively navigate the game
+- See when they get an answer correct or incorrect
+- Find out the correct answer if they get an answer incorrect
+- Find out their overall score
 - See what question they are on
 
 ### Existing User Stories
@@ -89,7 +89,6 @@ An existing user wants to be able to:
 - The handwritten font Shadows Into Light was chosen to provide a more personal feel. It was used on the site/business name 'Golden Ape Visual Media' and in the about me greeting and thank you message as they make the about me message and business name more personal.
 - Mukta was chosen for the rest of the site as it is a clean sans-serif font which reads clearly and fits in with the minamilistic theme. 
 
-
 ### Effects 
 
 - When the mouse hovers over a button, the shadow gets smaller and the background colour darkens to make it look like an actual button is being pressed to show that it can be clicked.
@@ -98,8 +97,9 @@ An existing user wants to be able to:
 
 - The site is as consistent as possible across all screen sizes. 
 - The buttons were animated to make it clear that they could be selectable. 
-- I did not include instructions on how to play as there are many quizzes that work in the same way, which everyone will be familiar with. 
-- Originally I put the choices in a 2x2 grid as you often find, but some of the answers are fairly long so the longer stacked choice boxes are more readable. 
+- I included very basic instructions on how to play as there are many quizzes that work in the same way, which everyone will be familiar with. 
+- I tried adding in a background image to the body as users are children but it wasn't very visible on small screens and took away from the game slightly so I used an icon in the header instead.
+- Originally I put the choices in a 2x2 grid as are often found in quizzes, but some of the answers are fairly long so the longer stacked choice boxes are more readable. 
 
 ## Features
 
@@ -153,17 +153,17 @@ Responsivity was tested using chrome developer tools.
 | Tests for all gameplay | iPhone SE | Pixel 5 | Samsung Galazy S8+ | iPad Air | Surface Pro 7 | Nest Hub | Desktop |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
 | Responsive | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Buttons change when hovered over | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Buttons can be clicked | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| All buttons change when hovered over | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| All buttons can be clicked | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | Start container fits on the screen | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Game container fits on the screen | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| No need to scroll | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| All text fits in containers | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
 | Question and answers fit on the screen without overlapping | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Correct answers turn green | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Incorrect answers turn red | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Answer choices become disabled once selected | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Continue button appears once answer is selected | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Conitnue button disappears once clicked | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Answer choices are enabled for next question | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
-| Answer choices return to normal colour for next question | Yes | Yes | Yes | Yes | Yes | Yes | Yes | 
+| Start button becomes smaller for smaller screens | Yes | Yes | Yes | N/A | N/A | N/A | N/A |
+| Continue button moves lower down for smaller screens | Yes | Yes | Yes | N/A | N/A | N/A | N/A |
+| Well done box increases in size to fit text for smaller screens | Yes | Yes | Yes | N/A | N/A | N/A | N/A |
+
 
 ## Browser Compatibility
 
@@ -176,9 +176,26 @@ Responsivity was tested using chrome developer tools.
 
 | User Action | Expected response | Correct Response |
 | --- | --- | :---: |
-| CLick Logo | Navigates to index page | Yes | 
-
-
+| Click 5 Questions | Gives a quiz of 5 questions | Yes | 
+| Click 5 Questions | Changes colour | Yes | 
+| Click 10 Questions | Gives a quiz of 10 questions | Yes |
+| Click 10 Questions | Changes colour | Yes | 
+| Click start quiz without selecting number of questions | Gives a quiz of 5 questions | Yes | 
+| Select correct answer | Choice turns green | Yes | 
+| Select correct answer | Score increases by 1 | Yes | 
+| Select incorrect answer | Choice turns red | Yes | 
+| Select incorrect answer | Correct choice turns green | Yes | 
+| Select answer | Choices become disabled | Yes |
+| Select answer | Continue button appears | Yes |
+| Continue button is clicked | Next question is shown | Yes |
+| Continue button is clicked | Continue button disappears | Yes |
+| Next question loads | Answer choices are enabled | Yes |
+| Next question loads | Answer choices are back to original colour | Yes |
+| Next question loads | Question number increases by 1 | Yes |
+| Continue button is clicked on last question | Well done message is shown | Yes |
+| Continue button is clicked on last question | Correct final score is shown | Yes |
+| Continue button is clicked on last question | Continue button changes to try again button | Yes |
+| Click return to quiz link on 404 page | Returns to index page | Yes | 
 
 ## Testing User Stories
 
@@ -187,18 +204,22 @@ Responsivity was tested using chrome developer tools.
 | Goal | Result | Image |
 | --- | --- | :---: |
 | Easily and intuitively navigate the site | A navigation bar is fixed to the top of every page which provides links to all main pages. The toggle for small screens is familiar to use. Users never need to click the back button. | [navigation bar](assets/images/navigation-bar.JPG) [navigation for small screens](assets/images/navigation-bar-small-screens.JPG) |
-| Find out what type of photographer they are | A large header on the hero image contrasts the dark background and tells users what service the photographer provides on the index page. Users can also read the about me section on the index page to find out more. | [hero image](assets/images/hero.JPG) [about me section]() |
-| Browse an existing portfolio of images | A carousel is present on the index page so they can view a selection from the landing page. The gallery page provides a larger selection that can be viewed on a larger scale in a modal. | [carousel](assets/images/image-carousel.JPG) [gallery](assets/images/gallery-large-screen.JPG) [modal](assets/images/modal.JPG) |
-| Navigate to the social media | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
-| Contact the photographer with questions or to book them | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG) [contact details](assets/images/footer-gold.JPG) |
 
+| Easily and intuitively navigate the game | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG)  |
+| See when they get an answer correct or incorrect | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
+| Find out the correct answer if they get an answer incorrect | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
+| Find out what their overall score is | | |
+| See what question they are on | | | 
+  
 ### Existing User Stories
 
 | Goal | Result | Image |
 | --- | --- | :---: |
-| Contact the photographer with questions or to book them | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG) [contact details](assets/images/footer-gold.JPG) |
-| View up to date images | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
-| Find links to social media accounts | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
+| See if they have improved by comparing their score to previous tries | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG)  |
+| Answer different questions each time they have a go | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
+| Answer questions in a different order if they do repeat | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
+| See when they get an answer correct or incorrect | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
+| Find out the correct answer if they get an answer incorrect | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
 
 ## Bugs
 
@@ -353,18 +374,9 @@ To clone the repsoitory:
 - Thank you to the Code Institute community on Slack for providing advice, particularly on changing the method on my form and advising to create a thank you page for it to limk to.
 - Thank you to my mentor Spencer for his invaluable advice and expertise.
 
-## User stories
-
-Users who access the application want to be able to: 
-
-- Play a revision quiz
-- See whether they got the question correct
-- See what the correct answer was if they got it incorrect
-- See their score at the end
-- Have a different set of questions each time they play 
 
 
-## UX design 
+
 
 ## Testing
 

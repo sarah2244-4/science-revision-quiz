@@ -22,6 +22,10 @@
 body {
     background-color: var(--color-4);
     color: var(--white);
+    background-image: url(../images/doodle-bw.jpg);
+    background-repeat: repeat;
+    background-size: cover;
+    background-blend-mode: darken;
 }
 
 header {
@@ -51,6 +55,52 @@ header h1 {
 
 /* Start screen */
 
+#game-container, #start-container {
+    background-color: var(--white);
+    color: var(--color-4);
+    text-align: center;
+    width: 80%;
+    height: 75vh;
+    margin: 0 auto;
+    padding: 1rem;
+    position: relative;
+}
+
+#start-container p {
+    background-color: var(--color-2);
+    font-weight: 500;
+    font-size: 1.2rem;
+    width: 90%;
+    margin: 0 auto 3vh auto;
+    padding: 10px;
+    color: black;
+}
+
+br {
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5% auto;
+    width: 80%;
+}
+
+.start-image {
+    height: 150px;
+    width: auto;
+}
+
+.image-1 {
+    top: 50px;
+    left: 0;
+}
+
+/* Start buttons */
+
 #btn-start {
     background-color: var(--color-3);
     color: var(--white);
@@ -68,21 +118,6 @@ header h1 {
     transform: translate( 1px, 1px);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: var(--active-button);
-}
-
-#start-container p {
-    background-color: var(--color-2);
-    font-weight: 500;
-    font-size: 1.2rem;
-    width: 90%;
-    margin: 0 auto 3vh auto;
-    padding: 10px;
-    color: black;
-}
-
-br {
-    display: block;
-    margin-bottom: 1rem;
 }
 
 .btn-number {
@@ -108,17 +143,6 @@ br {
 }
 
 /* Game screen */
-
-#game-container, #start-container {
-    background-color: var(--white);
-    color: var(--color-4);
-    text-align: center;
-    width: 80%;
-    height: 75vh;
-    margin: 0 auto;
-    padding: 1rem;
-    position: relative;
-}
 
 .game-header {
     margin-bottom: 0.9em;
@@ -162,10 +186,6 @@ br {
     box-shadow: none;
     transform: translate( 2px, 2px);
 }
-
-/* .btn-choice:hover {
-    background-color: #e69f12;
-} */
 
 .btn-choice[disabled] {
     pointer-events: none;
@@ -213,7 +233,7 @@ br {
     position: absolute;
     justify-content: center;
     top: 25%;
-    left: 20%;
+    left: 22%;
     text-align: center;
     font-size: 2.6rem;
 }
@@ -244,11 +264,20 @@ br {
 footer {
     position: fixed;
     bottom: 0;
-    padding: 10px;
-    background-color: none;
+    padding: 6px;
+    background-color: var(--color-4);
     width: 100%;
+    font-weight: 500;
+}
+
+footer a {
+    text-decoration: none;
     color: var(--white);
-    font-weight: 100;
+    margin-left: 10px;
+}
+
+footer a:hover {
+    color: var(--color-1);
 }
 
 /* Small screen responsivity */
@@ -258,12 +287,16 @@ footer {
         font-size: 1rem;
     }
     #question {
-        font-size: 1.2rem;
+        font-size: 1.4rem;
     }
     #quiz-end {
         height: 40%;
         padding: 15px;
         font-size: 2rem;
+    }
+    .start-image {
+        height: 100px;
+        padding: 10px;
     }
 }
 
@@ -296,6 +329,9 @@ footer {
         height: 100px;
         margin-top: 5px;
     }
+    #question {
+        font-size: 1rem;
+    }
 }
 
 /* 404 page */
@@ -318,4 +354,8 @@ footer {
     display: block;
     font-size: 2rem;
     margin-top: 20px;
+}
+
+.error-link:hover, .error-link:active {
+    color: var(--color-1);
 }
