@@ -9,7 +9,6 @@
     --color-4: #29335c;
     --color-5: #2F2823;
     --white: #fffefa;
-    --button: #E1515D;
 }
 
 * {
@@ -162,9 +161,9 @@ br {
     transform: translate( 0.5px, 0.5px);
 }
 
-.btn-choice:hover {
+/* .btn-choice:hover {
     background-color: #e69f12;
-}
+} */
 
 .btn-choice[disabled] {
     pointer-events: none;

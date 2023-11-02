@@ -107,38 +107,182 @@ An existing user wants to be able to:
 
 #### Start of Quiz
 
-- The landing page initially contains information on what the quiz is about for new users. 
+- The landing page initially contains information on what the quiz is about and how to play for new users. 
 - There is a bright button in the center of the page that allows you start the quiz. If you click this you will start a quiz of 5 questions. 
-- There are two further buttons that offer the choice to answer a different number of questions once selected. They change to a contrasting colour to make it clear they have been selected.
+- There are two further buttons that offer the choice to answer a different number of questions once selected. They change colour to make it clear they have been selected.
 
-#### Question Page
+#### Gameplay
 
-- This view shows users what question number they are on and how many there are to allow them to keep track of their progress.
-- It also shows users their current score. 
+- This view shows users what question number they are on and how many there are as well as their current score to allow them to keep track of their progress.
+- The question number container is above the question to give it a border.
 - The question is the only large text on the container so it stands out.
-- The answer choices are listed. 
-  - These are animated to make it clear when the mouse hovers over them and can be selected.
-- The selected answer choices change green if correct or red if incorrect. If the selected answer is incorrect the correct answer will also turn green to show users the correct answer. 
-- Once a choice has been selected, the continue button appears, allowing users to move onto the next question. 
+- The answer choices are listed and are subtly animated so users can see when the mouse hovers over them.
+- Once a choice has been selected the following happens:
+  - If correct it turns green.
+  - If incorrect it turns red and the correct answer turns green.
+  - All choices are disabled to prevent other options being selected. 
+  - The continue button appears, allowing users to move onto the next question. 
+- When the continue button is clicked, the next question is displayed and the answer choices are reset to their original colours. 
+- Questions displayed are selected at random and come up in a different order. 
 
 #### End of Quiz
+
+- A well done message pops up to display to the user how many questions they got correct out of the numnber of questions they answered. 
+- The continue button changes into a try again button. This change is animated so it draws users attention to it and they are more likely to play the quiz again.
+  - The try again button is blue so it stands out from the orange, red and green behind it. 
 
 #### 404 Page
 
 ![404 error message](assets/images/error-404.JPG)
 
-- This page was customised to maintain site-wide consistency and povide a clear direct route back to the home (about) page along with the 404 error message.
-- The home link is important has been made clear as it is in bold and animates when a mouse hovers over it. 
+- This page was customised to maintain site-wide consistency and povide a clear direct route back to the quiz along with the 404 error message.
 
 ### Future Features
 
-- A map to show their location once they are running out of a studio. 
-- A live calendar with slots that users can book. 
-- An FAQ question if they have a lot of similar queries.
+If there was more time to implement more features, these may include to:
+- Add in more questions to the question bank so users can select to answer more questions and questions displayed are more random.
+- Create different types of questions, such as fill in the blanks. 
+- Add pop up messages explaining the correct answer in more detail.
 
 ## Testing 
 
-View the testing document [here](testing.md). 
+## Responsivity 
+
+Responsivity was tested using chrome developer tools. 
+
+| Tests for all gameplay | iPhone SE | Pixel 5 | Samsung Galazy S8+ | iPad Air | Surface Pro 7 | Nest Hub | Desktop |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
+| Responsive | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Buttons change when hovered over | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Buttons can be clicked | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Start container fits on the screen | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Question and answers fit on the screen without overlapping | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Correct answers turn green | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Incorrect answers turn red | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Answer choices become disabled once selected | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Continue button appears once answer is selected | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Conitnue button disappears once clicked | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Answer choices are enabled for next question | Yes | Yes | Yes | Yes | Yes | Yes | Yes |
+| Answer choices return to normal colour for next question | Yes | Yes | Yes | Yes | Yes | Yes | Yes | 
+
+## Browser Compatibility
+
+| Tests for all gameplay | Chrome | Firefox | Edge | Opera |
+| --- | :---: | :---: | :---: | :---: |
+| Loads as expected | Yes | Yes | Yes | Yes |
+| Responsive | Yes | Yes | Yes | Yes |
+
+## Manual Tests
+
+| User Action | Expected response | Correct Response |
+| --- | --- | :---: |
+| CLick Logo | Navigates to index page | Yes | 
+
+
+
+## Testing User Stories
+
+### New Users
+
+| Goal | Result | Image |
+| --- | --- | :---: |
+| Easily and intuitively navigate the site | A navigation bar is fixed to the top of every page which provides links to all main pages. The toggle for small screens is familiar to use. Users never need to click the back button. | [navigation bar](assets/images/navigation-bar.JPG) [navigation for small screens](assets/images/navigation-bar-small-screens.JPG) |
+| Find out what type of photographer they are | A large header on the hero image contrasts the dark background and tells users what service the photographer provides on the index page. Users can also read the about me section on the index page to find out more. | [hero image](assets/images/hero.JPG) [about me section]() |
+| Browse an existing portfolio of images | A carousel is present on the index page so they can view a selection from the landing page. The gallery page provides a larger selection that can be viewed on a larger scale in a modal. | [carousel](assets/images/image-carousel.JPG) [gallery](assets/images/gallery-large-screen.JPG) [modal](assets/images/modal.JPG) |
+| Navigate to the social media | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
+| Contact the photographer with questions or to book them | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG) [contact details](assets/images/footer-gold.JPG) |
+
+### Existing User Stories
+
+| Goal | Result | Image |
+| --- | --- | :---: |
+| Contact the photographer with questions or to book them | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG) [contact details](assets/images/footer-gold.JPG) |
+| View up to date images | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
+| Find links to social media accounts | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
+
+## Bugs
+
+### Resolved bugs
+
+- Every time I added a background overlay to the header image it covered the buttons too. If I changed the brightness of the image it also changed the brightness of the buttons even though I did exactly the same as the example project. 
+    
+    I found the code 
+    ```
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+    ```
+    from [here](https://dzuz14.medium.com/code-a-full-width-hero-background-image-with-transparent-overlay-95d757f8ff2c) to turn the overlay into a flex object which didn't interfere with text on top of it. 
+
+- I wanted the logo to be circular as it was designed for a circular profile image on facebook. As the image was a rectange rather than a square, the standard border radius didn't work. 
+
+    My first choice was to crop the image and re-upload it as a square. 
+
+    However, I came across code to center the rectangle into a circle 
+    [here](https://www.webfx.com/blog/web-design/circular-images-css/) by adding the code
+    ```
+    overflow: hidden;
+	top: 50%;
+	transform: translateY(20%);
+    ```
+
+- Initially the profile image on the index page was in its own div and the text was in a separate div. This meant I could not get the text to wrap around it. 
+    - I put image into the same div as the text and `float: left;` now works correctly.
+
+- The submit button on the form would not load the thank you page. 
+    - I changed the POST method to GET. 
+
+### Unresolved Bugs
+
+- When submitting an invalid form, the required messages don't always appear below the input fields that need completing. 
+    - I couldn't find a fix without removing all formatting for the form. However, the message still comes up if the mouse hovers over the inputs and the page scrolls back up to the incompleted form suggesting there is an issue. 
+    - I decided to also add red borders to invalid fields as a visual cue the inputs weren't complete. 
+- The menu doesn't close on a mobile view when I test on my device. 
+    - I copied the code that worked when I tried it on Bootstrap Docs directly into my site, but it didn't close on my site either. 
+    - I removed all styling from my navbar and this didn't fix it either. 
+
+## Validating
+
+I used the [W3 Validator](https://validator.w3.org/) to validate my code. 
+
+Initial issues were: 
+
+- The 404 and thank you pages contained extra body tags. 
+- The modals contained example aria-lablledby values that didn't match an existing ID as the modals did not have titles.
+
+All pages have been run through the validator and all files pass. 
+
+![W3C Validator message](assets/images/w3validator.JPG)
+
+## Lighthouse Testing
+
+### Initial Testing 
+
+![Initial Lighthouse test](assets/images/testing/lighthouse-initial-test.JPG)
+
+Initial testing found issues with:
+
+- For performance images massively impacted load time. I then resized them and changed the image types to .WebP.
+- The SEO had issues with a missing description in the head, which I added in. 
+- Accessibility showed that ARIA IDs were not unique. I was unsure how to recifty this as it came from the Bootstrap navbar. 
+- Also the footer headings had skipped heading order to h5 so I changed these to h2 and resized them in the style.css file. 
+
+Once everything had been fixed I tested the pages with Lighthouse again. 
+
+### Final Results of Testing
+
+#### Index Page
+
+![Index page Lighthouse test](assets/images/testing/lighthouse-index.JPG)
+
+#### Gallery Page
+
+![Gallery page Lighthouse test](assets/images/testing/lighthouse-gallery.JPG)
+
+#### Contact Page
+
+![Contact page Lighthouse test](assets/images/testing/lighthouse-contact.JPG)
 
 ## Technologies Used 
 

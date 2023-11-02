@@ -217,6 +217,7 @@ function userChoice(selectedChoice) {
 	showScore();
 	console.log(currentQuestion.answer);
 	console.log(selectedChoice.innerText);
+	console.log(selectedChoice.classList);
 
 	ctnButton.classList.remove("hidden"); // Show the continue button
 }
