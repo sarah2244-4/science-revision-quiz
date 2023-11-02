@@ -31,9 +31,13 @@ body {
 header {
     width: 100%;
     background-color: none;
-    color: white;
     height: 3rem;
     padding-top: 0.6rem;
+}
+
+header a {
+    text-decoration: none;
+    color: var(--white);
 }
 
 header h1 {
