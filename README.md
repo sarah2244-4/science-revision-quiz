@@ -205,7 +205,7 @@ Responsivity was tested using chrome developer tools.
 | --- | --- | :---: |
 | Easily and intuitively navigate the site | A navigation bar is fixed to the top of every page which provides links to all main pages. The toggle for small screens is familiar to use. Users never need to click the back button. | [navigation bar](assets/images/navigation-bar.JPG) [navigation for small screens](assets/images/navigation-bar-small-screens.JPG) |
 
-| Easily and intuitively navigate the game | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG)  |
+| Easily and intuitively navigate the game | The design is minimalistic with clear buttons that animate as the mouse hovers over them. | [contact form](assets/images/contact-form.JPG)  |
 | See when they get an answer correct or incorrect | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
 | Find out the correct answer if they get an answer incorrect | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
 | Find out what their overall score is | | |
