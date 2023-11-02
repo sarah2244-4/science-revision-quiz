@@ -47,6 +47,7 @@ Users will primarily be Key Stage 3 students (11-14 year olds) looking for a rev
 ### New User Stories
 
 A first time user of the site wants to be able to:
+- Know what the quiz is about
 - Easily and intuitively navigate the game
 - See when they get an answer correct or incorrect
 - Find out the correct answer if they get an answer incorrect
@@ -58,7 +59,7 @@ A first time user of the site wants to be able to:
 An existing user wants to be able to:
 - See if they have improved by comparing their score to previous tries
 - Answer different questions each time they have a go
-- Answer questions in a different order if they do repeat 
+- Spend different amounts of time answering the quiz as revision
 
 ## Design
 
@@ -92,13 +93,16 @@ An existing user wants to be able to:
 ### Effects 
 
 - When the mouse hovers over a button, the shadow gets smaller and the background colour darkens to make it look like an actual button is being pressed to show that it can be clicked.
+- The cursor also changes to a pointer when it hovers over a button or a link to show you can click it.
 
 ### Design choices
 
 - The site is as consistent as possible across all screen sizes. 
 - The buttons were animated to make it clear that they could be selectable. 
 - I included very basic instructions on how to play as there are many quizzes that work in the same way, which everyone will be familiar with. 
-- I tried adding in a background image to the body as users are children but it wasn't very visible on small screens and took away from the game slightly so I used an icon in the header instead.
+- I tried adding in a background image to the start screen but it was too busy so I added it to the body. I used a science doodle image as most users will be children.
+  - The white container in front of the background image allows all elements to be seen clearly. 
+- The images on the landing page are also science doodles designed to add some colour to the page and make it more engaged for young users. 
 - Originally I put the choices in a 2x2 grid as are often found in quizzes, but some of the answers are fairly long so the longer stacked choice boxes are more readable. 
 
 ## Features
@@ -140,15 +144,28 @@ An existing user wants to be able to:
 ### Future Features
 
 If there was more time to implement more features, these may include to:
-- Add in more questions to the question bank so users can select to answer more questions and questions displayed are more random.
+- Add in more questions to the question bank so users can select to answer more questions and questions presented are more random.
 - Create different types of questions, such as fill in the blanks. 
 - Add pop up messages explaining the correct answer in more detail.
 
 ## Testing 
 
-## Responsivity 
+### Automated Testing 
 
-Responsivity was tested using chrome developer tools. 
+- For automated tests I used Jest.
+- I chose to use automated testing when initially creating the `newGame()` function as it is reliable and provided quick feedback on whether the game was starting correctly before I had relevant styling in place to see myself.
+- I found tests in jest wouldn't work if functions used variables defined globally - I had to redefine them inside the functions. 
+- The tests showed that when starting a new game:
+  - The game score was reset to 0 in the object and on the site
+  - The start button disappears and the game container appears
+  - 10 random questions were initially generated
+  - The first question displayed was at the start of the question array
+
+### Manual Testing 
+
+Since the project was small, once the initial function was set up the rest of my testing was manual so I could see in the console what was going wrong and view all functionality and responsivity. All manual testing was done with Chrome Developer Tools.
+
+#### Responsivity 
 
 | Tests for all gameplay | iPhone SE | Pixel 5 | Samsung Galazy S8+ | iPad Air | Surface Pro 7 | Nest Hub | Desktop |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | 
@@ -164,15 +181,14 @@ Responsivity was tested using chrome developer tools.
 | Continue button moves lower down for smaller screens | Yes | Yes | Yes | N/A | N/A | N/A | N/A |
 | Well done box increases in size to fit text for smaller screens | Yes | Yes | Yes | N/A | N/A | N/A | N/A |
 
-
-## Browser Compatibility
+#### Browser Compatibility
 
 | Tests for all gameplay | Chrome | Firefox | Edge | Opera |
 | --- | :---: | :---: | :---: | :---: |
 | Loads as expected | Yes | Yes | Yes | Yes |
 | Responsive | Yes | Yes | Yes | Yes |
 
-## Manual Tests
+#### Functionality and Usability
 
 | User Action | Expected response | Correct Response |
 | --- | --- | :---: |
@@ -185,6 +201,7 @@ Responsivity was tested using chrome developer tools.
 | Select correct answer | Score increases by 1 | Yes | 
 | Select incorrect answer | Choice turns red | Yes | 
 | Select incorrect answer | Correct choice turns green | Yes | 
+| Select incorrect answer | Scores stays the same | Yes | 
 | Select answer | Choices become disabled | Yes |
 | Select answer | Continue button appears | Yes |
 | Continue button is clicked | Next question is shown | Yes |
@@ -195,73 +212,43 @@ Responsivity was tested using chrome developer tools.
 | Continue button is clicked on last question | Well done message is shown | Yes |
 | Continue button is clicked on last question | Correct final score is shown | Yes |
 | Continue button is clicked on last question | Continue button changes to try again button | Yes |
+| Navigated to page that doesn't exist | Custom 404 page loads | Yes |
 | Click return to quiz link on 404 page | Returns to index page | Yes | 
+| Click header text | Returns to index page | Yes | 
 
-## Testing User Stories
+### Testing User Stories
 
-### New Users
+#### New Users
 
 | Goal | Result | Image |
 | --- | --- | :---: |
-| Easily and intuitively navigate the site | A navigation bar is fixed to the top of every page which provides links to all main pages. The toggle for small screens is familiar to use. Users never need to click the back button. | [navigation bar](assets/images/navigation-bar.JPG) [navigation for small screens](assets/images/navigation-bar-small-screens.JPG) |
-
-| Easily and intuitively navigate the game | The design is minimalistic with clear buttons that animate as the mouse hovers over them. | [contact form](assets/images/contact-form.JPG)  |
-| See when they get an answer correct or incorrect | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
-| Find out the correct answer if they get an answer incorrect | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
-| Find out what their overall score is | | |
-| See what question they are on | | | 
+| Know what the quiz is about | The text on the landing page describes what the quiz is about with basic how to play instructions. | |
+| Easily and intuitively navigate the site | The design is minimalistic with clear buttons that animate as the mouse hovers over them. Buttons link to the next stage of the quiz, such as the start game button and the continue button. During the game users can click on the header to return to the landing page and restart the quiz. Users never need to click the back button. | [navigation bar](assets/images/navigation-bar.JPG) |
+| See when they get an answer correct or incorrect | Correct answer choices turn green, which is the universal colour for correct, and incorrect turn red, which is the universal colour for an incorrect answer. | [gallery](assets/images/gallery-large-screen.JPG) |
+| Find out the correct answer if they get an answer incorrect | The correct answer is displayed in green when the user gets an answer incorrect. | [footer](assets/images/footer-gold.JPG) |
+| Find out what their overall score is | A dynamic score counter is present above the questions. This increases by 1 as soon as a correct answer is chosen. | |
+| See what question they are on | A dynamic question counter is present above the questions. It increases by 1 when the continue button is clicked. It also shows how many questions there are in total so users can work out how many questions are left. | | 
   
-### Existing User Stories
+#### Existing User Stories
 
 | Goal | Result | Image |
 | --- | --- | :---: |
-| See if they have improved by comparing their score to previous tries | A contact form is provided that can be filled with any message. The footer also provides a contact phone number, email, and social media that could be used to contact the photographer. | [contact form](assets/images/contact-form.JPG)  |
-| Answer different questions each time they have a go | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
-| Answer questions in a different order if they do repeat | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
-| See when they get an answer correct or incorrect | The gallery page shows the photographer's portfolio. | [gallery](assets/images/gallery-large-screen.JPG) |
-| Find out the correct answer if they get an answer incorrect | The footer provides external links to the social media pages. Users will expect to find them here. The links open in new tabs so they don't lose the website. | [footer](assets/images/footer-gold.JPG) |
+| See if they have improved by comparing their score to previous tries | The end of quiz well done message appears with a score. Users can compare this score to previous goes. | [contact form](assets/images/contact-form.JPG)  |
+| Answer different questions each time they have a go | There is a function that shuffles the questions presented from the question bank so they are always presented in a different order. | [gallery](assets/images/gallery-large-screen.JPG) |
+| See when they get an answer correct or incorrect | Correct answer choices turn green, which is the universal colour for correct, and incorrect turn red, which is the universal colour for an incorrect answer. | [gallery](assets/images/gallery-large-screen.JPG) |
+| Find out the correct answer if they get an answer incorrect | A dynamic question counter is present above the questions. It increases by 1 when the continue button is clicked. It also shows how many questions there are in total so users can work out how many questions are left. | [footer](assets/images/footer-gold.JPG) |
+| Spend different amounts of time answering the quiz as revision | Users can select how many questions they would like to answer. The more questions, the longer they will spend practising |  | 
 
-## Bugs
+### Bugs
 
-### Resolved bugs
+#### Resolved bugs
 
-- Every time I added a background overlay to the header image it covered the buttons too. If I changed the brightness of the image it also changed the brightness of the buttons even though I did exactly the same as the example project. 
+- 
     
-    I found the code 
-    ```
-    display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: column;
-    ```
-    from [here](https://dzuz14.medium.com/code-a-full-width-hero-background-image-with-transparent-overlay-95d757f8ff2c) to turn the overlay into a flex object which didn't interfere with text on top of it. 
 
-- I wanted the logo to be circular as it was designed for a circular profile image on facebook. As the image was a rectange rather than a square, the standard border radius didn't work. 
+#### Unresolved Bugs
 
-    My first choice was to crop the image and re-upload it as a square. 
-
-    However, I came across code to center the rectangle into a circle 
-    [here](https://www.webfx.com/blog/web-design/circular-images-css/) by adding the code
-    ```
-    overflow: hidden;
-	top: 50%;
-	transform: translateY(20%);
-    ```
-
-- Initially the profile image on the index page was in its own div and the text was in a separate div. This meant I could not get the text to wrap around it. 
-    - I put image into the same div as the text and `float: left;` now works correctly.
-
-- The submit button on the form would not load the thank you page. 
-    - I changed the POST method to GET. 
-
-### Unresolved Bugs
-
-- When submitting an invalid form, the required messages don't always appear below the input fields that need completing. 
-    - I couldn't find a fix without removing all formatting for the form. However, the message still comes up if the mouse hovers over the inputs and the page scrolls back up to the incompleted form suggesting there is an issue. 
-    - I decided to also add red borders to invalid fields as a visual cue the inputs weren't complete. 
-- The menu doesn't close on a mobile view when I test on my device. 
-    - I copied the code that worked when I tried it on Bootstrap Docs directly into my site, but it didn't close on my site either. 
-    - I removed all styling from my navbar and this didn't fix it either. 
+- 
 
 ## Validating
 
@@ -318,7 +305,6 @@ HTML5 and CSS3 used.
 - [GitHub](https://github.com/) to store repository online.
 - [Google fonts](https://fonts.google.com/) for the fonts.
 - [Font Awesome](https://fontawesome.com/) for social media icons.
-- [Bootstrap v5.3](https://getbootstrap.com/) for the responsive grid layout, navbar, carousel and modal codes.
 
 ## Deployment
 
@@ -337,14 +323,14 @@ To deploy the site to GitHub pages the steps followed were:
 ### Local Source Files
 
 To deploy the website using source files follow the steps:
-- Open the GitHub repository [here](https://github.com/sarah2244-4/Project-1-goldenapevisualmedia)
+- Open the GitHub repository [here](https://github.com/sarah2244-4/science-revision-quiz)
 - In the repository click on the green '<> Code' dropdown
 - Select 'Download ZIP'
 - Navigate to the Zip file in your file explorer and open it
 - Right click on the 'index.html' file and open with the chosen browser
 
 To clone the repsoitory: 
-- Open the GitHub repository [here](https://github.com/sarah2244-4/Project-1-goldenapevisualmedia)
+- Open the GitHub repository [here](https://github.com/sarah2244-4/science-revision-quiz)
 - In the repository click on the green '<> Code' dropdow
 - Copy the HTTPS URL link
 - Open the terminal on the computer's IDE
@@ -354,20 +340,14 @@ To clone the repsoitory:
 
 ### Content
 
-- I referred back to code I had previously written throughout.
-- The navbar code comes from Bootstrap framework [here](https://getbootstrap.com/docs/5.3/components/navbar/).
-- The carousel code comes from Bootstrap framework [here](https://getbootstrap.com/docs/5.3/components/carousel/).
-- The modal also comes from Bootstrap framework [here](#https://getbootstrap.com/docs/5.3/components/modal/).
+- I referred back to code I had previously written throughout the course, including the jest testing project to help with the automated Jest tests.
 - [Am I Responsive?](https://ui.dev/amiresponsive) to display a mock-up of my site in different viewports.
-- To center the rectangle logo into a circle I used [this website](https://www.webfx.com/blog/web-design/circular-images-css/) to help me.
-- To fix the hero image overlay I used [this website](https://dzuz14.medium.com/code-a-full-width-hero-background-image-with-transparent-overlay-95d757f8ff2c) to help me.
 - I used [Coolors](https://coolors.co/) to help me come up with a colour scheme.
 - I used [WebAIM](https://webaim.org/resources/contrastchecker/) to check the contrast of the colours used on all the elements. 
 
 ### Images
 
-- The logo image was used with permission from a friend. 
-- 
+- The background image and images on the landing page are all downloaded from [Creative Fabrica](https://www.creativefabrica.com/), through which I have a commercial license and can use these images on websites. 
 
 ### Advice
 
@@ -402,7 +382,3 @@ which showed me that I wasn't updating the current question index in the correct
 
 #### Testing User Stories
 
-### Automated Testing 
-- For automated tests I used Jest.
-- Tests in jest wouldn't work if functions used variables defined globally - I had to redefine them inside the functions. 
-- selectedQuestions was not defined in jest.

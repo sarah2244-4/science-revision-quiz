@@ -54,20 +54,4 @@ describe("new game function works correctly", () => {
 	test("question displayed first is index 0", () => {
 		expect(currentQuestion).toBe(selectedQuestions[0].question);
 	});
-	test("the question's first choice is displayed as option A", () => {
-		expect(document.getElementById("choice-one").innerText).toBe(
-			currentQuestion.choices[0]
-		);
-	});
 });
-
-describe("correct answer function works correctly", () => {
-	beforeAll(() => {
-		selectedChoice.innerText === currentQuestion.answer;
-		game.counter = 0;
-	});
-	test("correct choice box adds correct class", () => {
-		expect(selectedChoice).classList.contains(green).toBe(true);
-	});
-});
-

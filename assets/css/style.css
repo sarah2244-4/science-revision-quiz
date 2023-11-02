@@ -117,6 +117,7 @@ br {
     transform: translate( 1px, 1px);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     background-color: var(--active-button);
+    cursor: pointer;
 }
 
 .btn-number {
@@ -133,6 +134,7 @@ br {
 
 .btn-number:hover {
     background-color: var(--color-3);
+    cursor: pointer;
 }
 
 .btn-number:active, .btn-number.active {
@@ -184,6 +186,7 @@ br {
 .btn-choice:hover, .btn-choice:active {
     box-shadow: none;
     transform: translate( 2px, 2px);
+    cursor: pointer;
 }
 
 .btn-choice[disabled] {
@@ -209,6 +212,7 @@ br {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transform: translate( 1px, 1px);
     background-color: var(--active-button);
+    cursor: pointer;
 }
 
 
@@ -257,6 +261,7 @@ br {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transform: translate( 1px, 1px);
     background-color: #29334c;
+    cursor: pointer;
 }
 
 
@@ -365,4 +370,11 @@ footer a:hover {
 
 .error-link:hover, .error-link:active {
     color: var(--color-1);
+}
+
+.blue-container {
+    background-color: var(--color-4);
+    width: 80%;
+    height: 75vh;
+    margin: 0 auto;
 }
