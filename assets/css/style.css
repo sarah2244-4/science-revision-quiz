@@ -9,6 +9,7 @@
     --color-4: #29335c;
     --color-5: #2F2823;
     --white: #fffefa;
+    --active-button: #561318;
 }
 
 * {
@@ -59,15 +60,14 @@ header h1 {
     border: none;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     transition-duration: 0.3s;
-    margin-top: 5%;
     display: block;
-    margin: auto;
+    margin: 5% auto;
 }
 
 #btn-start:hover, #btn-start:active {
     transform: translate( 1px, 1px);
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background-color: #cc3240;
+    background-color: var(--active-button);
 }
 
 #start-container p {
@@ -98,11 +98,13 @@ br {
 }
 
 .btn-number:hover {
-    background-color: #cc3240;
+    background-color: var(--color-3);
 }
 
 .btn-number:active, .btn-number.active {
     background-color: var(--color-3);
+    color: white;
+
 }
 
 /* Game screen */
@@ -158,7 +160,7 @@ br {
 
 .btn-choice:hover, .btn-choice:active {
     box-shadow: none;
-    transform: translate( 0.5px, 0.5px);
+    transform: translate( 2px, 2px);
 }
 
 /* .btn-choice:hover {
@@ -187,7 +189,7 @@ br {
 #btn-ctn:hover, #btn-ctn:active {
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transform: translate( 1px, 1px);
-    background-color: #cc3240;
+    background-color: var(--active-button);
 }
 
 
