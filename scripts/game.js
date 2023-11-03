@@ -1,13 +1,13 @@
-// Question object
+// Question bank object
 
 const questionBank = [
 	{
 		question: "What is produced in photosynthesis?",
 		choices: [
-			"carbon dioxide and water",
-			"carbon dioxide and glucose",
-			"oxygen and glucose",
-			"water and oxygen",
+			"Carbon dioxide and water",
+			"Carbon dioxide and glucose",
+			"Oxygen and glucose",
+			"Water and oxygen",
 		],
 		answer: "oxygen and glucose",
 	},
@@ -47,14 +47,9 @@ const questionBank = [
 		answer: "Brittle",
 	},
 	{
-		question: "Give the correct size order from smallest to largest:",
-		choices: [
-			"Cell, tissue, organ, organ system, organism",
-			"Organism, organ system, organ, tissue, cell",
-			"Organism, cell, tissue, organ, organ system",
-			"Cell, organism, organ, tissue, organ system",
-		],
-		answer: "Cell, tissue, organ, organ system, organism",
+		question: "What charge does an electron have?",
+		choices: ["Neutral", "Negative", "No charge", "Positive"],
+		answer: "Negative",
 	},
 	{
 		question: "What number is neutral on the pH scale?",
@@ -95,24 +90,34 @@ const questionBank = [
 
 // Global variables
 
-const ctnButton = document.getElementById("btn-ctn");
+const continueButton = document.getElementById("btn-ctn");
 const startContainer = document.getElementById("start-container");
 const gameContainer = document.getElementById("game-container");
-let scoreDiv = document.getElementById("current-score");
 const startButton = document.getElementById("btn-start");
+const endScreen = document.getElementById("quiz-end");
 
-let questionDiv = document.getElementById("question");
+const questionDiv = document.getElementById("question");
 let choiceOne = document.getElementById("choice-one");
 let choiceTwo = document.getElementById("choice-two");
 let choiceThree = document.getElementById("choice-three");
 let choiceFour = document.getElementById("choice-four");
+let buttonOne = document.getElementById("btn-one");
+let buttonTwo = document.getElementById("btn-two");
+let buttonThree = document.getElementById("btn-three");
+let buttonFour = document.getElementById("btn-four");
+
+const fiveQuestions = document.getElementById("five-questions");
+const tenQuestions = document.getElementById("ten-questions");
+
+let showQuestionNumber = document.getElementById("question-number");
+let currentScore = document.getElementById("current-score");
 
 let selectedQuestions = [];
 let currentQuestionIndex = 0;
 let selectedChoice;
-let numberOfQuestions = 5;
+let numberOfQuestions = 5; // 5 questions generated if not overidden
 
-// Qame object
+// Game object
 
 let game = {
 	counter: 0,
@@ -120,82 +125,88 @@ let game = {
 	questionCounter: 1,
 };
 
-// Event Listeners
+// Event listeners
 
 document.addEventListener("DOMContentLoaded", () => {
-	document.getElementById("btn-start").addEventListener("click", newGame);
+	startButton.addEventListener("click", newGame);
 });
-document.getElementById("btn-one").addEventListener("click", () => {
+buttonOne.addEventListener("click", () => {
 	userChoice(choiceOne);
 	selectedChoice = choiceOne;
 });
-document.getElementById("btn-two").addEventListener("click", () => {
+buttonTwo.addEventListener("click", () => {
 	userChoice(choiceTwo);
 	selectedChoice = choiceTwo;
 });
-document.getElementById("btn-three").addEventListener("click", () => {
+buttonThree.addEventListener("click", () => {
 	userChoice(choiceThree);
 	selectedChoice = choiceThree;
 });
-document.getElementById("btn-four").addEventListener("click", () => {
+buttonFour.addEventListener("click", () => {
 	userChoice(choiceFour);
 	selectedChoice = choiceFour;
 });
-document.getElementById("five-questions").addEventListener("click", () => {
+fiveQuestions.addEventListener("click", () => {
 	numberOfQuestions = 5;
-	document.getElementById("five-questions").classList.add("active");
-	document.getElementById("ten-questions").classList.remove("active");
+	fiveQuestions.classList.add("active");
+	tenQuestions.classList.remove("active");
 });
-document.getElementById("ten-questions").addEventListener("click", () => {
+tenQuestions.addEventListener("click", () => {
 	numberOfQuestions = 10;
-	document.getElementById("ten-questions").classList.add("active");
-	document.getElementById("five-questions").classList.remove("active");
+	tenQuestions.classList.add("active");
+	fiveQuestions.classList.remove("active");
 });
+continueButton.addEventListener("click", nextQuestion);
 
-document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
-
-/* Function to start new game when clicking start game
-
-**/ 
+/**
+ * Function to start new game
+ * when start game button is clicked
+ */
 function newGame() {
 	game.counter = 0; // resets counter to 0
 	game.questionCounter = 1; // resets question number to 1
 	currentQuestionIndex = 0; // resets current question index from array to 0
 	showScore(); // displays score from counter
-	document.getElementById("start-container").classList.add("hidden"); // hides start button
-	document.getElementById("game-container").classList.remove("hidden");
-	// displays number of questions
+	startContainer.classList.add("hidden"); // hides start button
+	gameContainer.classList.remove("hidden");
 	generateQuestions(numberOfQuestions); // generates questions
-	document.getElementById(
-		"question-number"
-	).innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
+	showQuestionNumber.innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
 }
 
-// Function to display the current score
-
+/**
+ * Function to display the
+ * current score on the page
+ */
 function showScore() {
-	document.getElementById("current-score").innerText = `${game.counter}`;
+	currentScore.innerText = `${game.counter}`;
 }
 
-// Function to generate specific number of random ordered questions
-
+/**
+ * Function to generate random order of
+ * questions from question bank.
+ * Must input a number of questions
+ * @param {*} numberOfQuestions
+ * @returns
+ */
 function generateQuestions(numberOfQuestions) {
-	let shuffledQuestions = questionBank.sort(() => Math.random() - 0.5);
-	selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions); // Slice the shuffled array to get the desired number of questions
+	let shuffledQuestions = questionBank.sort(() => Math.random() - 0.5); // Shuffle questions in question bank
+	selectedQuestions = shuffledQuestions.slice(0, numberOfQuestions); // Slice array to get desired number of questions
 
 	currentQuestion = selectedQuestions[currentQuestionIndex];
-	document.getElementById("question").innerText = currentQuestion.question; // Display the question in the question div
-	document.getElementById("choice-one").innerText = currentQuestion.choices[0]; // Display the choices in the choice buttons
-	document.getElementById("choice-two").innerText = currentQuestion.choices[1];
-	document.getElementById("choice-three").innerText =
-		currentQuestion.choices[2];
-	document.getElementById("choice-four").innerText = currentQuestion.choices[3];
+	questionDiv.innerText = currentQuestion.question; // Display the question in the question div
+	choiceOne.innerText = currentQuestion.choices[0]; // Display the choices in the choice buttons
+	choiceTwo.innerText = currentQuestion.choices[1];
+	choiceThree.innerText = currentQuestion.choices[2];
+	choiceFour.innerText = currentQuestion.choices[3];
 
 	return selectedQuestions;
 }
 
-// Function for choice selected
-
+/**
+ * Function to change colours and counter when
+ * answer choice is selected.
+ * @param {*} selectedChoice
+ */
 function userChoice(selectedChoice) {
 	const choiceButtons = document.querySelectorAll(".btn-choice");
 	const correctAnswer = currentQuestion.answer;
@@ -215,11 +226,14 @@ function userChoice(selectedChoice) {
 		selectedChoice.parentElement.classList.add("red"); // If answer is incorrect, turn the button red
 	}
 	showScore();
-	ctnButton.classList.remove("hidden"); // Show the continue button
+	continueButton.classList.remove("hidden"); // Show the continue button
 }
 
-// Function to display next question
-
+/**
+ * Function to display the next question
+ * or well done message
+ * at end of question array
+ */
 function nextQuestion() {
 	currentQuestionIndex++;
 	currentQuestion = selectedQuestions[currentQuestionIndex];
@@ -237,33 +251,39 @@ function nextQuestion() {
 		choiceButtons.forEach((choice) => {
 			choice.disabled = false;
 		});
-		ctnButton.classList.add("hidden");
-
+		continueButton.classList.add("hidden");
 		showNextQuestion(); // Display the next question
 	} else {
 		endQuiz();
 	}
 }
 
+/**
+ * Function to fill in
+ * question and answers
+ */
 function showNextQuestion() {
 	const nextQuestion = selectedQuestions[currentQuestionIndex];
-	document.getElementById("question").innerText = nextQuestion.question;
-	document.getElementById("choice-one").innerText = nextQuestion.choices[0];
-	document.getElementById("choice-two").innerText = nextQuestion.choices[1];
-	document.getElementById("choice-three").innerText = nextQuestion.choices[2];
-	document.getElementById("choice-four").innerText = nextQuestion.choices[3];
+	questionDiv.innerText = nextQuestion.question;
+	choiceOne.innerText = nextQuestion.choices[0];
+	choiceTwo.innerText = nextQuestion.choices[1];
+	choiceThree.innerText = nextQuestion.choices[2];
+	choiceFour.innerText = nextQuestion.choices[3];
 }
 
-
+/**
+ * Function to show well done
+ * message at end of quiz
+ * and create try again button
+ */
 function endQuiz() {
-	const endScreen = document.getElementById("quiz-end");
 	endScreen.innerHTML = `
 	<h2>Well done!</h2>
 	<p>You got <span class="bold">${game.counter}</span> out of <span class="bold">${numberOfQuestions}</span>`;
 	endScreen.classList.remove("hidden");
-	ctnButton.innerHTML = `Try Again <i class="fa-solid fa-arrow-rotate-right"></i>`; // Add arrow icon
-	ctnButton.id = "btn-again";
-	ctnButton.addEventListener("click", function () {
+	continueButton.innerHTML = `Try Again <i class="fa-solid fa-arrow-rotate-right"></i>`;
+	continueButton.id = "btn-again";
+	continueButton.addEventListener("click", function () {
 		window.location.reload();
 	});
 }
