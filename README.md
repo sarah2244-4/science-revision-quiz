@@ -243,12 +243,20 @@ Since the project was small, once the initial function was set up the rest of my
 
 #### Resolved bugs
 
-- 
-    
+- The question counter increased to 6 when continue was clicked on the last question to show the well done message. This was fixed by moving `game.questionCounter++` into the if statement `(currentQuestionIndex < selectedQuestions.length)`.
+- When I did this, for questions 2 and above, the selected answer choices weren't changing into the expected colours. Using 
+  ```
+  console.log(currentQuestion.answer);
+  console.log(selectedChoice.innerText);
+  console.log(selectedChoice.classList);
+  ```
+  showed that the quiz thought the answers to the questions were for the previous questions. I had also moved `currentQuestionIndex++` into the if statement so I movedit back above `currentQuestion = selectedQuestions[currentQuestionIndex]`.
+- The selected choices weren't changing colour. 
+  - I used `console.log()` to check the classes were updating when choices were clicked. Eventually I found the background colour in my hover and active classes were overriding the coloured classes I was adding in the functions so I removed them. 
 
 #### Unresolved Bugs
 
-- 
+None 
 
 ## Validating
 
@@ -256,8 +264,8 @@ I used the [W3 Validator](https://validator.w3.org/) to validate my code.
 
 Initial issues were: 
 
-- The 404 and thank you pages contained extra body tags. 
-- The modals contained example aria-lablledby values that didn't match an existing ID as the modals did not have titles.
+- The choice buttons contained `<p>` tags that I changed to `<span>` tags.
+- The CSS file had a `background-color: none;` value that didn't exist.
 
 All pages have been run through the validator and all files pass. 
 
@@ -353,32 +361,3 @@ To clone the repsoitory:
 
 - Thank you to the Code Institute community on Slack for providing advice, particularly on changing the method on my form and advising to create a thank you page for it to limk to.
 - Thank you to my mentor Spencer for his invaluable advice and expertise.
-
-
-
-
-
-## Testing
-
-### Manual Testing
-- I used Chrome Dev Tools to find errors. 
-- I added in console.log(") to functions during development to see what was displayed. 
-- To test `function generateQuestions(numberOfQuestions)` I changed the `numberOfQuestions` to different numbers and checked the console that the correct length array was produced. 
-    - I also refreshed the browser to check the questions were different each time to ensure shuffling was working. 
-- Changing `currentQuestionIndex` to above 1 didn't change the question displayed when tested in the `newGame()` function. 
-    - When this was moved above the `generateQuestions(numberOfQuestions)` this changed the question index displayed.
-- Below 768px the well done message spilled out of the container
-    - Added media query to make message container larger and change padding
-- Below 486px the bottom choice and continue button overlapped 
-    - Added in media query to bring the game container higher on the screen
-- Below 768px the longer question answer spilled out of the game container and overlapped the continue button
-    - Added media query to change font size 
-- It was showing red when I selected correct answers after question 1. I used 
-```
-console.log(selectedAnswer)
-console.log(answer)
-```
-which showed me that I wasn't updating the current question index in the correct place as it thought the correct answer was for the previous question. I moved the `++` and it worked.
-
-#### Testing User Stories
-

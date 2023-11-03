@@ -154,7 +154,9 @@ document.getElementById("ten-questions").addEventListener("click", () => {
 
 document.getElementById("btn-ctn").addEventListener("click", nextQuestion);
 
-// Function to start new game when clicking start game
+/* Function to start new game when clicking start game
+
+**/ 
 function newGame() {
 	game.counter = 0; // resets counter to 0
 	game.questionCounter = 1; // resets question number to 1
@@ -210,15 +212,9 @@ function userChoice(selectedChoice) {
 		game.counter++;
 		selectedChoice.parentElement.classList.add("green"); // If answer is correct, turn the button green
 	} else {
-		selectedChoice.parentElement.classList.add("red");
+		selectedChoice.parentElement.classList.add("red"); // If answer is incorrect, turn the button red
 	}
-	// If answer is incorrect, turn the button red
-
 	showScore();
-	console.log(currentQuestion.answer);
-	console.log(selectedChoice.innerText);
-	console.log(selectedChoice.classList);
-
 	ctnButton.classList.remove("hidden"); // Show the continue button
 }
 
@@ -271,13 +267,3 @@ function endQuiz() {
 		window.location.reload();
 	});
 }
-
-module.exports = {
-	game,
-	newGame,
-	showScore,
-	generateQuestions,
-	userChoice,
-	nextQuestion,
-	showNextQuestion,
-};

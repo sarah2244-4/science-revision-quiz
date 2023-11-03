@@ -30,7 +30,6 @@ body {
 
 header {
     width: 100%;
-    background-color: none;
     height: 3rem;
     padding-top: 0.6rem;
 }
@@ -361,7 +360,7 @@ footer a:hover {
 .error-link {
     text-align: center;
     text-decoration: none;
-    color: var(--color-3);
+    color: var(--white);
     font-weight: 900;
     display: block;
     font-size: 2rem;
