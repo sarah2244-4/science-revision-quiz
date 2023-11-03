@@ -115,7 +115,8 @@ let currentScore = document.getElementById("current-score");
 let selectedQuestions = [];
 let currentQuestionIndex = 0;
 let selectedChoice;
-let numberOfQuestions; // 5 questions generated if not overidden
+let numberOfQuestions;
+let currentQuestion;
 
 // Game object
 
