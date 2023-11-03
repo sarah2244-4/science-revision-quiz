@@ -115,7 +115,7 @@ let currentScore = document.getElementById("current-score");
 let selectedQuestions = [];
 let currentQuestionIndex = 0;
 let selectedChoice;
-let numberOfQuestions = 5; // 5 questions generated if not overidden
+let numberOfQuestions; // 5 questions generated if not overidden
 
 // Game object
 
@@ -163,14 +163,18 @@ continueButton.addEventListener("click", nextQuestion);
  * when start game button is clicked
  */
 function newGame() {
-	game.counter = 0; // resets counter to 0
-	game.questionCounter = 1; // resets question number to 1
-	currentQuestionIndex = 0; // resets current question index from array to 0
-	showScore(); // displays score from counter
-	startContainer.classList.add("hidden"); // hides start button
-	gameContainer.classList.remove("hidden");
-	generateQuestions(numberOfQuestions); // generates questions
-	showQuestionNumber.innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
+	if (numberOfQuestions === undefined) {
+		alert("Please select how many questions you would like!");
+	} else {
+		game.counter = 0; // resets counter to 0
+		game.questionCounter = 1; // resets question number to 1
+		currentQuestionIndex = 0; // resets current question index from array to 0
+		showScore(); // displays score from counter
+		startContainer.classList.add("hidden"); // hides start button
+		gameContainer.classList.remove("hidden");
+		generateQuestions(numberOfQuestions); // generates questions
+		showQuestionNumber.innerText = `Question ${game.questionCounter} of ${numberOfQuestions}`;
+	}
 }
 
 /**

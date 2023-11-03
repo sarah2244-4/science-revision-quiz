@@ -4,7 +4,7 @@ KS3 Science Revision Quiz is the name of a quiz designed for people to test thei
 
 The site is live, the link to this is found [HERE](https://sarah2244-4.github.io/science-revision-quiz/).
 
-![Website](assets/images/site-mockups.JPG)
+![Website mockup](assets/images/mockup.JPG)
 
 ## Contents
 
@@ -46,20 +46,23 @@ Users will primarily be Key Stage 3 students (11-14 year olds) looking for a rev
 
 ### New User Stories
 
-A first time user of the site wants to be able to:
-- Know what the quiz is about
-- Easily and intuitively navigate the game
-- See when they get an answer correct or incorrect
-- Find out the correct answer if they get an answer incorrect
-- Find out their overall score
-- See what question they are on
+As a first time user of the site I want to be able to:
+- View information so I know what the quiz is about
+- View instructions so I know how to play
+- Easily and intuitively navigate the game without using the browser buttons
+- Know when I get an answer correct or incorrect
+- Find out the correct answer if I get an answer incorrect to learn
+- Find out my overall score to see how well I did 
+- See what question I am on to track my progress
 
 ### Existing User Stories
 
-An existing user wants to be able to:
-- See if they have improved by comparing their score to previous tries
-- Answer different questions each time they have a go
-- Spend different amounts of time answering the quiz as revision
+As an existing user I want to be able to:
+- See if I have improved by comparing my score to previous tries
+- Answer different questions each time I play so I have a wide range of revision
+- Know when I get an answer correct or incorrect
+- Find out the correct answer if I get an answer incorrect to learn
+- Spend different amounts of time answering the quiz depending how long I have to revise
 
 ## Design
 
@@ -87,8 +90,7 @@ An existing user wants to be able to:
 
 ### Typography
 
-- The handwritten font Shadows Into Light was chosen to provide a more personal feel. It was used on the site/business name 'Golden Ape Visual Media' and in the about me greeting and thank you message as they make the about me message and business name more personal.
-- Mukta was chosen for the rest of the site as it is a clean sans-serif font which reads clearly and fits in with the minamilistic theme. 
+- The 
 
 ### Effects 
 
@@ -111,25 +113,38 @@ An existing user wants to be able to:
 
 #### Start of Quiz
 
+![landing page](assets/images/landing-page.JPG)
+![game container](assets/images/start-container.JPG)
+![active number question selector](assets/images/active-question-number.JPG)
+
 - The landing page initially contains information on what the quiz is about and how to play for new users. 
 - There is a bright button in the center of the page that allows you start the quiz. If you click this you will start a quiz of 5 questions. 
-- There are two further buttons that offer the choice to answer a different number of questions once selected. They change colour to make it clear they have been selected.
+- There are two further buttons that offer the choice to answer a different number of questions once selected. They change colour to become the same colour as the start button to make it clear they have been selected.
 
 #### Gameplay
 
-- This view shows users what question number they are on and how many there are as well as their current score to allow them to keep track of their progress.
+![Score and question counter](assets/images/question-and-score.JPG)
+
+- The game cntainer shows users what question number they are on and how many there are as well as their current score to allow them to keep track of their progress.
+
+![Quiz screen](assets/images/game-container.JPG)
+![Correct answer](assets/images/correct-answer.JPG)
+![Incorrect answer](assets/images/incorrect-answer.JPG)
+
 - The question number container is above the question to give it a border.
 - The question is the only large text on the container so it stands out.
 - The answer choices are listed and are subtly animated so users can see when the mouse hovers over them.
 - Once a choice has been selected the following happens:
   - If correct it turns green.
   - If incorrect it turns red and the correct answer turns green.
-  - All choices are disabled to prevent other options being selected. 
+  - All choices are disabled to prevent other options being selected (visible by the greying out of text on non-selected choice answers). 
   - The continue button appears, allowing users to move onto the next question. 
 - When the continue button is clicked, the next question is displayed and the answer choices are reset to their original colours. 
 - Questions displayed are selected at random and come up in a different order. 
 
 #### End of Quiz
+
+![Well done message and score](assets/images/end-quiz.JPG)
 
 - A well done message pops up to display to the user how many questions they got correct out of the numnber of questions they answered. 
 - The continue button changes into a try again button. This change is animated so it draws users attention to it and they are more likely to play the quiz again.
@@ -137,23 +152,27 @@ An existing user wants to be able to:
 
 #### 404 Page
 
-![404 error message](assets/images/error-404.JPG)
+![404 error message](assets/images/error-message.JPG)
 
 - This page was customised to maintain site-wide consistency and povide a clear direct route back to the quiz along with the 404 error message.
 
 ### Future Features
 
-If there was more time to implement more features, these may include to:
+If there was more time to implement more features, these may include:
 - Add in more questions to the question bank so users can select to answer more questions and questions presented are more random.
 - Create different types of questions, such as fill in the blanks. 
 - Add pop up messages explaining the correct answer in more detail.
+
+If users want more features, these may include:
+- A timer to mimic exam time constraints
+- A way to save previous scores and try to beat previous highscores
 
 ## Testing 
 
 ### Automated Testing 
 
+I chose to use automated testing when initially developing the `newGame()` function to ensure I was writing it correctly to pass tests and optimize my code. It provided reliable and quick feedback on whether the game was starting correctly before I had relevant styling in place to see myself.
 - For automated tests I used Jest.
-- I chose to use automated testing when initially creating the `newGame()` function as it is reliable and provided quick feedback on whether the game was starting correctly before I had relevant styling in place to see myself.
 - I found tests in jest wouldn't work if functions used variables defined globally - I had to redefine them inside the functions. 
 - The tests showed that when starting a new game:
   - The game score was reset to 0 in the object and on the site
@@ -163,7 +182,26 @@ If there was more time to implement more features, these may include to:
 
 ### Manual Testing 
 
-Since the project was small, once the initial function was set up the rest of my testing was manual so I could see in the console what was going wrong and view all functionality and responsivity. All manual testing was done with Chrome Developer Tools.
+Since the project was small and I was confident after developing the first function, once the initial function was set up the rest of my testing was manual and I used the console with `console.log()` in my functions to log values such as the question answers what was going wrong. I was also able view all functionality and responsivity this way. Manual testing was done with Chrome Developer Tools.
+
+### Bugs
+
+#### Resolved bugs
+
+- The question counter increased to 6 when continue was clicked on the last question to show the well done message. This was fixed by moving `game.questionCounter++` into the if statement `(currentQuestionIndex < selectedQuestions.length)`.
+- When I did this, for questions 2 and above, the selected answer choices weren't changing into the expected colours. Using 
+  ```
+  console.log(currentQuestion.answer);
+  console.log(selectedChoice.innerText);
+  console.log(selectedChoice.classList);
+  ```
+  showed that the quiz thought the answers to the questions were for the previous questions. I had also moved `currentQuestionIndex++` into the if statement so I movedit back above `currentQuestion = selectedQuestions[currentQuestionIndex]`.
+- The selected choices weren't changing colour. 
+  - I used `console.log()` to check the classes were updating when choices were clicked. Eventually I found the background colour in my hover and active classes were overriding the coloured classes I was adding in the functions so I removed them. 
+
+#### Unresolved Bugs
+
+None I amaware of.
 
 #### Responsivity 
 
@@ -204,14 +242,15 @@ Since the project was small, once the initial function was set up the rest of my
 | Select incorrect answer | Scores stays the same | Yes | 
 | Select answer | Choices become disabled | Yes |
 | Select answer | Continue button appears | Yes |
-| Continue button is clicked | Next question is shown | Yes |
-| Continue button is clicked | Continue button disappears | Yes |
+| Click continue | Next question is shown | Yes |
+| Click continue | Continue button disappears | Yes |
 | Next question loads | Answer choices are enabled | Yes |
 | Next question loads | Answer choices are back to original colour | Yes |
 | Next question loads | Question number increases by 1 | Yes |
-| Continue button is clicked on last question | Well done message is shown | Yes |
-| Continue button is clicked on last question | Correct final score is shown | Yes |
-| Continue button is clicked on last question | Continue button changes to try again button | Yes |
+| Click continue on last question | Well done message is shown | Yes |
+| Click continue on last question | Correct final score is shown | Yes |
+| Click continue on last question | Continue button changes to try again button | Yes |
+| CLick try again | Index page refreshes | Yes |
 | Navigated to page that doesn't exist | Custom 404 page loads | Yes |
 | Click return to quiz link on 404 page | Returns to index page | Yes | 
 | Click header text | Returns to index page | Yes | 
@@ -222,41 +261,23 @@ Since the project was small, once the initial function was set up the rest of my
 
 | Goal | Result | Image |
 | --- | --- | :---: |
-| Know what the quiz is about | The text on the landing page describes what the quiz is about with basic how to play instructions. | |
-| Easily and intuitively navigate the site | The design is minimalistic with clear buttons that animate as the mouse hovers over them. Buttons link to the next stage of the quiz, such as the start game button and the continue button. During the game users can click on the header to return to the landing page and restart the quiz. Users never need to click the back button. | [navigation bar](assets/images/navigation-bar.JPG) |
-| See when they get an answer correct or incorrect | Correct answer choices turn green, which is the universal colour for correct, and incorrect turn red, which is the universal colour for an incorrect answer. | [gallery](assets/images/gallery-large-screen.JPG) |
-| Find out the correct answer if they get an answer incorrect | The correct answer is displayed in green when the user gets an answer incorrect. | [footer](assets/images/footer-gold.JPG) |
-| Find out what their overall score is | A dynamic score counter is present above the questions. This increases by 1 as soon as a correct answer is chosen. | |
-| See what question they are on | A dynamic question counter is present above the questions. It increases by 1 when the continue button is clicked. It also shows how many questions there are in total so users can work out how many questions are left. | | 
-  
+| View information so I know what the quiz is about | The header displays the quiz title and the text on the landing page describes what the quiz is about. | [instructions](assets/images/instructions.JPG) |
+| View instructions so I know how to play | The text on the landing page provides basic how to play instructions. | [instructions](assets/images/instructions.JPG) |
+| Easily and intuitively navigate the game without using the browser buttons | The design is minimalistic with clear buttons that animate as the mouse hovers over them. Buttons link to the next stage of the quiz, such as the start game button and the continue button. During the game users can click on the header to return to the landing page and restart the quiz. The header or logo is standard practise to load home page, so users will expect this. Users never need to click the back button. | [start button](assets/images/start-button.JPG) [active start button](assets/images/start-button-hover.JPG) |
+| Know when I get an answer correct or incorrect | Correct answer choices turn green, which is the universal colour for correct, and incorrect answer choices turn red, which is the universal colour for an incorrect answer. | [correct answer](assets/images/correct-answer.JPG) [incorrect answer](assets/images/incorrect-answer.JPG) |
+| Find out the correct answer if I get an answer incorrect to learn | The correct answer is displayed in green when the user gets an answer incorrect. | [incorrect answer](assets/images/incorrect-answer.JPG) |
+| Find out my overall score to see how well I did  | A dynamic score counter is present above the questions. This increases by 1 as soon as a correct answer is chosen. | [dynamic score counter](assets/images/question-and-score.JPG) [final score](assets/images/end-quiz.JPG) |
+| See what question I am on to track my progress | A dynamic question counter is present above the questions. It increases by 1 when the continue button is clicked. It also shows how many questions there are in total so users can work out how many questions are left. | [dynamic question counter](assets/images/question-and-score.JPG) | 
+
 #### Existing User Stories
 
 | Goal | Result | Image |
 | --- | --- | :---: |
-| See if they have improved by comparing their score to previous tries | The end of quiz well done message appears with a score. Users can compare this score to previous goes. | [contact form](assets/images/contact-form.JPG)  |
-| Answer different questions each time they have a go | There is a function that shuffles the questions presented from the question bank so they are always presented in a different order. | [gallery](assets/images/gallery-large-screen.JPG) |
-| See when they get an answer correct or incorrect | Correct answer choices turn green, which is the universal colour for correct, and incorrect turn red, which is the universal colour for an incorrect answer. | [gallery](assets/images/gallery-large-screen.JPG) |
-| Find out the correct answer if they get an answer incorrect | A dynamic question counter is present above the questions. It increases by 1 when the continue button is clicked. It also shows how many questions there are in total so users can work out how many questions are left. | [footer](assets/images/footer-gold.JPG) |
-| Spend different amounts of time answering the quiz as revision | Users can select how many questions they would like to answer. The more questions, the longer they will spend practising |  | 
-
-### Bugs
-
-#### Resolved bugs
-
-- The question counter increased to 6 when continue was clicked on the last question to show the well done message. This was fixed by moving `game.questionCounter++` into the if statement `(currentQuestionIndex < selectedQuestions.length)`.
-- When I did this, for questions 2 and above, the selected answer choices weren't changing into the expected colours. Using 
-  ```
-  console.log(currentQuestion.answer);
-  console.log(selectedChoice.innerText);
-  console.log(selectedChoice.classList);
-  ```
-  showed that the quiz thought the answers to the questions were for the previous questions. I had also moved `currentQuestionIndex++` into the if statement so I movedit back above `currentQuestion = selectedQuestions[currentQuestionIndex]`.
-- The selected choices weren't changing colour. 
-  - I used `console.log()` to check the classes were updating when choices were clicked. Eventually I found the background colour in my hover and active classes were overriding the coloured classes I was adding in the functions so I removed them. 
-
-#### Unresolved Bugs
-
-None 
+| See if I have improved by comparing my score to previous tries | The end of quiz well done message appears with a score. Users can compare this score to previous goes. Users can also try the quiz again if they want another go immediately using the try again button under the well done message. | [final score](assets/images/end-quiz.JPG) [try again button](assets/images/end-quiz.JPG) |
+| Answer different questions each time I play so I have a wide range of revision | There is a function that shuffles the questions presented from the question bank so they are always presented in the game container in a different order. | [question](assets/images/game-container.JPG) |
+| Know when I get an answer correct or incorrect | Correct answer choices turn green, which is the universal colour for correct, and incorrect answer choices turn red, which is the universal colour for an incorrect answer. | [correct answer](assets/images/correct-answer.JPG) [incorrect answer](assets/images/incorrect-answer.JPG) |
+| Find out the correct answer if I get an answer incorrect to learn |  The correct answer is displayed in green when the user gets an answer incorrect. | [incorrect answer](assets/images/incorrect-answer.JPG) |
+| Spend different amounts of time answering the quiz depending how long I have to revise | Users can select how many questions they would like to answer depending on how much revision they want to do. | [number of questions buttons](assets/images/number-of-questions.JPG) | 
 
 ## Validating
 
@@ -269,50 +290,36 @@ Initial issues were:
 
 All pages have been run through the validator and all files pass. 
 
-![W3C Validator message](assets/images/w3validator.JPG)
+![W3C Validator message](assets/images/w3-validator.JPG)
 
 ## Lighthouse Testing
 
-### Initial Testing 
+In initial testing:
 
-![Initial Lighthouse test](assets/images/testing/lighthouse-initial-test.JPG)
+- There were chrome extension issues affecting performance so the page did not load in time. I retested it in a private browser.
+- Accessibility showed that the github icon needed a description so I added an aria-label description. 
 
-Initial testing found issues with:
+Once everything had been fixed I tested the pages with Lighthouse again and they now have high values, with accessibility and SEO at 100 and performance at 99/98. 
 
-- For performance images massively impacted load time. I then resized them and changed the image types to .WebP.
-- The SEO had issues with a missing description in the head, which I added in. 
-- Accessibility showed that ARIA IDs were not unique. I was unsure how to recifty this as it came from the Bootstrap navbar. 
-- Also the footer headings had skipped heading order to h5 so I changed these to h2 and resized them in the style.css file. 
+Index page:
+![Lighthouse test for index page](assets/images/lighthouse-index.JPG)
 
-Once everything had been fixed I tested the pages with Lighthouse again. 
-
-### Final Results of Testing
-
-#### Index Page
-
-![Index page Lighthouse test](assets/images/testing/lighthouse-index.JPG)
-
-#### Gallery Page
-
-![Gallery page Lighthouse test](assets/images/testing/lighthouse-gallery.JPG)
-
-#### Contact Page
-
-![Contact page Lighthouse test](assets/images/testing/lighthouse-contact.JPG)
+404 page:
+![Lighthouse test for 404 error page](assets/images/lighthouse-404.JPG)
 
 ## Technologies Used 
 
 ### Main Languages
 
-HTML5 and CSS3 used. 
+HTML5, CSS3 and Javascript used. 
 
 ### Frameworks, Libraries & Programs
 
 - Visual Studio Code as code editor. 
-- GitHub Desktop to store repository and allow me to code using VS code. 
-- [GitHub](https://github.com/) to store repository online.
-- [Google fonts](https://fonts.google.com/) for the fonts.
-- [Font Awesome](https://fontawesome.com/) for social media icons.
+- GitHub Desktop to store the local repository and allow me to code using VS code. 
+- [GitHub](https://github.com/) to store the repository online.
+- [Google fonts](https://fonts.google.com/) for the font.
+- [Font Awesome](https://fontawesome.com/) for icons.
 
 ## Deployment
 
